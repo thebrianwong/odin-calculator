@@ -6,7 +6,7 @@ body {
 button {
     padding: 15px;
     width: 220px;
-    font-size: 45px;
+    font-size: 60px;
     border-radius: 12px;
 }
 
@@ -39,7 +39,7 @@ button {
 .display-container {
     justify-content: flex-end;
     font-weight: bold;
-    font-size: 45px;
+    font-size: 60px;
     padding: 0 10px 0;
 }
 
