@@ -1,0 +1,32 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator-container,
+.display-container,
+.buttons-container {
+    display: flex;
+}
+
+.calculator-container {
+    justify-content: space-around;
+    align-items: stretch;
+    flex-direction: column;
+    border: solid 1px black;
+    height: 75vh;
+    width: 1000px;
+}
+
+.display-container,
+.buttons-container {
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+}
