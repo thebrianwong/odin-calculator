@@ -23,6 +23,7 @@ button {
 }
 
 .calculator-container {
+    background-color: aqua;
     justify-content: space-around;
     align-items: stretch;
     flex-direction: column;
@@ -46,6 +47,7 @@ button {
 .bottom-container {
     justify-content: center;
     align-items: center;
+    height: 70%;
 }
 
 .buttons-container {
