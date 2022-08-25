@@ -13,3 +13,7 @@ const multiply = (x,y) => {
 const divide = (x,y) => {
     return x / y;
 }
+
+const operate = (operatorFunction,x,y) => {
+    return operatorFunction(x,y);
+}
