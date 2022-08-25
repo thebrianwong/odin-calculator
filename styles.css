@@ -3,6 +3,13 @@ body {
     margin: 0;
 }
 
+button {
+    padding: 15px;
+    width: 220px;
+    font-size: 45px;
+    border-radius: 12px;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -11,7 +18,7 @@ body {
 
 .calculator-container,
 .display-container,
-.buttons-container {
+.bottom-container {
     display: flex;
 }
 
@@ -25,17 +32,26 @@ body {
 }
 
 .display-container,
-.buttons-container {
+.bottom-container {
     background-color: whitesmoke;
 }
 
 .display-container {
     justify-content: flex-end;
     font-weight: bold;
-    font-size: larger;
+    font-size: 45px;
     padding: 0 10px 0;
 }
 
-.buttons-container {
+.bottom-container {
     justify-content: center;
+    align-items: center;
+}
+
+.buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px;
+    gap: 5px;
 }
