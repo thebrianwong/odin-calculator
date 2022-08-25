@@ -17,14 +17,15 @@ button {
 }
 
 .calculator-container,
-.display-container,
+.top-container,
 .bottom-container {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .calculator-container {
     background-color: aqua;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: stretch;
     flex-direction: column;
     border: solid 1px black;
@@ -32,13 +33,14 @@ button {
     width: 1000px;
 }
 
-.display-container,
+.top-container,
 .bottom-container {
     background-color: whitesmoke;
 }
 
-.display-container {
+.top-container {
     justify-content: flex-end;
+    align-items: center;
     font-weight: bold;
     font-size: 60px;
     padding: 0 15px 0;
@@ -47,7 +49,6 @@ button {
 .bottom-container {
     justify-content: center;
     align-items: center;
-    height: 70%;
 }
 
 .buttons-container {
