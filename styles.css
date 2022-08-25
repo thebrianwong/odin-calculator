@@ -55,6 +55,6 @@ button {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 10px;
+    margin: 35.25px 0 0;
     gap: 33.33px;
 }
