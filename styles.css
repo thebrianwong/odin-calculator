@@ -26,7 +26,16 @@ body {
 
 .display-container,
 .buttons-container {
-    justify-content: center;
-    align-items: center;
     background-color: whitesmoke;
+}
+
+.display-container {
+    justify-content: flex-end;
+    font-weight: bold;
+    font-size: larger;
+    padding: 0 10px 0;
+}
+
+.buttons-container {
+    justify-content: center;
 }
