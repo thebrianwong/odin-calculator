@@ -66,10 +66,10 @@ const addOperatorClickers = () => {
                 secondValue = undefined;
             }
             if (firstValue !== undefined) {
-            currentOperator = button.getAttribute("id");
-            convertToFunction();
-            firstValue = Number(firstValue);
-            tempValue = "";
+                currentOperator = button.getAttribute("id");
+                convertToFunction();
+                firstValue = Number(firstValue);
+                tempValue = "";
             }
         })
     })
