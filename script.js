@@ -113,3 +113,4 @@ const resetValues = () => {
 addNumberClickers();
 addOperatorClickers();
 addEqualsClicker();
+updateDisplayValue(totalValue);
