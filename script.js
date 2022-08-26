@@ -57,6 +57,13 @@ const addOperatorClickers = () => {
     const operatorButtons = document.querySelectorAll(".operator-button");
     operatorButtons.forEach((button) => {
         button.addEventListener("click", () => {
+            if (firstValue !== undefined && secondValue !== undefined) {
+                secondValue = Number(secondValue);
+                totalValue = operate(currentOperator,firstValue,secondValue);
+                updateDisplayValue(totalValue);
+                firstValue = totalValue;
+                secondValue = undefined;
+            }
             currentOperator = button.getAttribute("id");
             convertToFunction();
             firstValue = Number(firstValue);
