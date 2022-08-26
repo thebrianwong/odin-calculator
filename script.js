@@ -1,7 +1,8 @@
-let displayValue = 0;
+let totalValue = 0;
 
 let firstValue;
 let secondValue;
+let tempValue = "";
 let currentOperator;
 
 const add = (x,y) => {
@@ -28,20 +29,28 @@ const addNumberClickers = () => {
     const numberButtons = document.querySelectorAll(".number-button");
     numberButtons.forEach((button) => {
         button.addEventListener("click", () => {
-            displayValue = Number(button.innerText);
-            if (firstValue === undefined || secondValue === undefined) {
-                updateDisplayValue();
+            // tempValue = Number(button.innerText);
+            let buttonValue = button.getAttribute("id").toString();
+            tempValue = tempValue.concat(buttonValue);
+            // tempValue += buttonValue
+            console.log(typeof tempValue)
+            console.log(tempValue)
+            trackValues(tempValue)
+            if (currentOperator === undefined) {
+                updateDisplayValue(firstValue);
+            } else if (currentOperator !== undefined) {
+                updateDisplayValue(secondValue);
             }
-            trackValues(displayValue)
+            // trackValues(tempValue)
             console.log(firstValue)
             console.log(secondValue)
         })
     })
 }
 
-const updateDisplayValue = () => {
+const updateDisplayValue = (value) => {
     const displayValueContainer = document.querySelector(".display-container");
-    displayValueContainer.innerText = displayValue;
+    displayValueContainer.innerText = value;
 }
 
 const addOperatorClickers = () => {
@@ -50,6 +59,8 @@ const addOperatorClickers = () => {
         button.addEventListener("click", () => {
             currentOperator = button.getAttribute("id");
             convertToFunction();
+            firstValue = Number(firstValue);
+            tempValue = "";
         })
     })
 }
@@ -71,9 +82,12 @@ const convertToFunction = () => {
 }
 
 const trackValues = (value) => {
-    if (firstValue === undefined) {
-        firstValue = value;
-    } else if (secondValue === undefined) {
+    if (currentOperator === undefined) {
+        // console.log(value)
+        // firstValue.push(value);
+        // firstValue.join("");
+        firstValue = value
+    } else if (currentOperator !== undefined) {
         secondValue = value;
     }
 }
@@ -81,8 +95,9 @@ const trackValues = (value) => {
 const addEqualsClicker = () => {
     const equalsButton = document.querySelector("#equals");
     equalsButton.addEventListener("click", () => {
-        displayValue = operate(currentOperator,firstValue,secondValue);
-        updateDisplayValue();
+        secondValue = Number(secondValue);
+        totalValue = operate(currentOperator,firstValue,secondValue);
+        updateDisplayValue(totalValue);
         resetValues();
     })
 }
