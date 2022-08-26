@@ -29,7 +29,7 @@ const addNumberClickers = () => {
     numberButtons.forEach((button) => {
         button.addEventListener("click", () => {
             displayValue = Number(button.innerText);
-            if (firstValue === undefined || secondValue === undefined){
+            if (firstValue === undefined || secondValue === undefined) {
                 updateDisplayValue();
             }
             trackValues(displayValue)
@@ -49,9 +49,25 @@ const addOperatorClickers = () => {
     operatorButtons.forEach((button) => {
         button.addEventListener("click", () => {
             currentOperator = button.getAttribute("id");
-            console.log(currentOperator)
+            convertToFunction();
         })
     })
+}
+
+const convertToFunction = () => {
+    switch (currentOperator) {
+        case "add":
+            currentOperator = add;
+            break;
+        case "subtract":
+            currentOperator = subtract;
+            break;
+        case "multiply":
+            currentOperator = multiply;
+            break;
+        case "divide":
+            currentOperator = divide;
+    }
 }
 
 const trackValues = (value) => {
@@ -62,5 +78,20 @@ const trackValues = (value) => {
     }
 }
 
+const addEqualsClicker = () => {
+    const equalsButton = document.querySelector("#equals");
+    equalsButton.addEventListener("click", () => {
+        displayValue = operate(currentOperator,firstValue,secondValue);
+        updateDisplayValue();
+        resetValues();
+    })
+}
+
+const resetValues = () => {
+    firstValue = undefined;
+    secondValue = undefined;
+}
+
 addNumberClickers();
 addOperatorClickers();
+addEqualsClicker();
