@@ -59,9 +59,12 @@ const addOperatorClickers = () => {
         button.addEventListener("click", () => {
             if (firstValue !== undefined && secondValue !== undefined) {
                 secondValue = Number(secondValue);
-                totalValue = operate(currentOperator,firstValue,secondValue);
-                totalValue = Math.round(totalValue * 10000) / 10000;
-                updateDisplayValue(totalValue);
+                checkZeroDivision();
+                if (secondValue !== 0) {
+                    totalValue = operate(currentOperator,firstValue,secondValue);
+                    totalValue = Math.round(totalValue * 10000) / 10000;
+                    updateDisplayValue(totalValue);
+                }
                 firstValue = totalValue;
                 secondValue = undefined;
             }
@@ -107,10 +110,13 @@ const addEqualsClicker = () => {
     equalsButton.addEventListener("click", () => {
         if (secondValue !== undefined) {
             secondValue = Number(secondValue);
-            totalValue = operate(currentOperator,firstValue,secondValue);
-            totalValue = Math.round(totalValue * 10000) / 10000;
-            console.log(totalValue)
-            updateDisplayValue(totalValue);
+            checkZeroDivision();
+            if (secondValue !== 0) {
+                totalValue = operate(currentOperator,firstValue,secondValue);
+                totalValue = Math.round(totalValue * 10000) / 10000;
+                console.log(totalValue)
+                updateDisplayValue(totalValue);
+            }
             resetValues();
         }
     })
@@ -130,6 +136,18 @@ const addClearClicker = () => {
         resetValues();
         updateDisplayValue(totalValue);
     })
+}
+
+const checkZeroDivision = () => {
+    if (secondValue === 0) {
+        rejectZeroDivision();
+        resetValues();
+    }
+}
+
+const rejectZeroDivision = () => {
+    const displayValueContainer = document.querySelector(".display-container");
+    displayValueContainer.innerText = "What're you crazy!?!?!?!?!";
 }
 
 addNumberClickers();
