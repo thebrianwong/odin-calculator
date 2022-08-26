@@ -1,5 +1,9 @@
 let displayValue = 0;
 
+let firstValue;
+let secondValue;
+let currentOperator;
+
 const add = (x,y) => {
     return x + y;
 }
@@ -25,7 +29,12 @@ const addNumberClickers = () => {
     numberButtons.forEach((button) => {
         button.addEventListener("click", () => {
             displayValue = Number(button.innerText);
-            updateDisplayValue();
+            if (firstValue === undefined || secondValue === undefined){
+                updateDisplayValue();
+            }
+            trackValues(displayValue)
+            console.log(firstValue)
+            console.log(secondValue)
         })
     })
 }
@@ -35,4 +44,23 @@ const updateDisplayValue = () => {
     displayValueContainer.innerText = displayValue;
 }
 
+const addOperatorClickers = () => {
+    const operatorButtons = document.querySelectorAll(".operator-button");
+    operatorButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            currentOperator = button.getAttribute("id");
+            console.log(currentOperator)
+        })
+    })
+}
+
+const trackValues = (value) => {
+    if (firstValue === undefined) {
+        firstValue = value;
+    } else if (secondValue === undefined) {
+        secondValue = value;
+    }
+}
+
 addNumberClickers();
+addOperatorClickers();
