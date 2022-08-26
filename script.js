@@ -124,7 +124,16 @@ const resetValues = () => {
     totalValue = 0;
 }
 
+const addClearClicker = () => {
+    const clearButton = document.querySelector("#clear");
+    clearButton.addEventListener("click", () => {
+        resetValues();
+        updateDisplayValue(totalValue);
+    })
+}
+
 addNumberClickers();
 addOperatorClickers();
 addEqualsClicker();
+addClearClicker();
 updateDisplayValue(totalValue);
