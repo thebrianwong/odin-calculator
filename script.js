@@ -60,6 +60,7 @@ const addOperatorClickers = () => {
             if (firstValue !== undefined && secondValue !== undefined) {
                 secondValue = Number(secondValue);
                 totalValue = operate(currentOperator,firstValue,secondValue);
+                totalValue = totalValue.toPrecision(5)
                 updateDisplayValue(totalValue);
                 firstValue = totalValue;
                 secondValue = undefined;
@@ -103,7 +104,10 @@ const addEqualsClicker = () => {
     const equalsButton = document.querySelector("#equals");
     equalsButton.addEventListener("click", () => {
         secondValue = Number(secondValue);
+        // totalValue = Math.round(operate(currentOperator,firstValue,secondValue) * 100 / 100);
         totalValue = operate(currentOperator,firstValue,secondValue);
+        totalValue = totalValue.toPrecision(5)
+        console.log(totalValue)
         updateDisplayValue(totalValue);
         resetValues();
     })
