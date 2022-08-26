@@ -105,6 +105,9 @@ const addEqualsClicker = () => {
 const resetValues = () => {
     firstValue = undefined;
     secondValue = undefined;
+    tempValue = "";
+    currentOperator = undefined;
+    totalValue = 0;
 }
 
 addNumberClickers();
