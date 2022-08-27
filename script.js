@@ -147,6 +147,7 @@ const resetValues = () => {
 const addClearClicker = () => {
     const clearButton = document.querySelector("#clear");
     clearButton.addEventListener("click", () => {
+        resetButtonColors();
         resetValues();
         updateDisplayValue(totalValue);
     })
