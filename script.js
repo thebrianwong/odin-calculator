@@ -30,6 +30,11 @@ const addNumberClickers = () => {
     numberButtons.forEach((button) => {
         button.addEventListener("click", () => {
             // tempValue = Number(button.innerText);
+            applyButtonColors(numberButtons, button, "numbers");
+            // numberButtons.forEach((button) => {
+            //     button.classList.remove("number-clicked");
+            // })
+            // button.classList.add("number-clicked");
             let buttonValue = button.getAttribute("id").toString();
             tempValue = tempValue.concat(buttonValue);
             // tempValue += buttonValue
@@ -57,6 +62,9 @@ const addOperatorClickers = () => {
     const operatorButtons = document.querySelectorAll(".operator-button");
     operatorButtons.forEach((button) => {
         button.addEventListener("click", () => {
+            // operatorButtons.forEach((button) => {
+            //     button.classList.toggle("operator-clicked")
+            // })
             if (firstValue !== undefined && secondValue !== undefined) {
                 secondValue = Number(secondValue);
                 checkZeroDivision();
@@ -69,6 +77,11 @@ const addOperatorClickers = () => {
                 secondValue = undefined;
             }
             if (firstValue !== undefined) {
+                applyButtonColors(operatorButtons, button, "operators");
+                // operatorButtons.forEach((button) => {
+                //     button.classList.remove("operator-clicked")
+                // })
+                // button.classList.add("operator-clicked")
                 currentOperator = button.getAttribute("id");
                 convertToFunction();
                 firstValue = Number(firstValue);
@@ -109,6 +122,7 @@ const addEqualsClicker = () => {
     const equalsButton = document.querySelector("#equals");
     equalsButton.addEventListener("click", () => {
         if (secondValue !== undefined) {
+            resetButtonColors();
             secondValue = Number(secondValue);
             checkZeroDivision();
             if (secondValue !== 0) {
@@ -201,6 +215,31 @@ const addDecimalClicker = () => {
                 updateDisplayValue(secondValue);
             }
         }   
+    })
+}
+
+const applyButtonColors = (allButtons, button, buttonType) => {
+    if (buttonType === "numbers") {
+        allButtons.forEach((button) => {
+            button.classList.remove("number-clicked");
+        })
+        button.classList.add("number-clicked");
+    } else if (buttonType === "operators") {
+        allButtons.forEach((button) => {
+            button.classList.remove("operator-clicked")
+        })
+        button.classList.add("operator-clicked")
+    }
+}
+
+const resetButtonColors = () => {
+    const numberButtons = document.querySelectorAll(".number-button");
+    const operatorButtons = document.querySelectorAll(".operator-button");
+    numberButtons.forEach((button) => {
+        button.classList.remove("number-clicked");
+    })
+    operatorButtons.forEach((button) => {
+        button.classList.remove("operator-clicked");
     })
 }
 

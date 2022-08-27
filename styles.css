@@ -77,3 +77,11 @@ button {
     margin: 0 10px 0;
     gap: 33.33px;
 }
+
+.operator-clicked {
+    background-color: #c27474;
+}
+
+.number-clicked {
+    background-color: #9bc274;
+}
