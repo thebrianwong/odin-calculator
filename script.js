@@ -141,7 +141,6 @@ const addClearClicker = () => {
 const checkZeroDivision = () => {
     if (secondValue === 0 && currentOperator === divide) {
         rejectZeroDivision();
-        resetValues();
     }
 }
 
