@@ -150,8 +150,45 @@ const rejectZeroDivision = () => {
     displayValueContainer.innerText = "What're you crazy!?!?!?!?!";
 }
 
+const addDeleteClicker = () => {
+    const deleteButton = document.querySelector("#delete");
+    deleteButton.addEventListener("click", () => {
+        if (currentOperator === undefined) {
+            console.log(tempValue)
+            console.log(firstValue)
+            console.log(typeof firstValue)
+            // trackValues(tempValue)
+            deleteLatestDigit();
+            trackValues(tempValue)
+            if (firstValue !== "") {
+                updateDisplayValue(firstValue);
+            } else {
+                updateDisplayValue(totalValue);
+            }
+        } else if (currentOperator !== undefined) {
+            deleteLatestDigit();
+            trackValues(tempValue)
+            if (secondValue !== "") {
+                updateDisplayValue(secondValue);
+            } else {
+                updateDisplayValue(totalValue);
+            }
+        }
+    })
+}
+
+const deleteLatestDigit = () => {
+    let latestDigit = tempValue.length - 1;
+    if (latestDigit === 0) {
+        tempValue = "";
+    } else if (latestDigit > 0) {
+        tempValue = tempValue.slice(0,latestDigit);
+    }
+}
+
 addNumberClickers();
 addOperatorClickers();
 addEqualsClicker();
 addClearClicker();
+addDeleteClicker();
 updateDisplayValue(totalValue);
