@@ -185,9 +185,29 @@ const deleteLatestDigit = () => {
     }
 }
 
+const addDecimalClicker = () => {
+    const decimalButton = document.querySelector("#decimal");
+    decimalButton.addEventListener("click", () => {
+        if (!tempValue.includes(".")) {
+            if (tempValue === "") {
+                tempValue = "0.";
+            } else {
+                tempValue = tempValue.concat(".");
+            }
+            trackValues(tempValue)
+            if (currentOperator === undefined) {
+                updateDisplayValue(firstValue);
+            } else if (currentOperator !== undefined) {
+                updateDisplayValue(secondValue);
+            }
+        }   
+    })
+}
+
 addNumberClickers();
 addOperatorClickers();
 addEqualsClicker();
 addClearClicker();
 addDeleteClicker();
+addDecimalClicker();
 updateDisplayValue(totalValue);
