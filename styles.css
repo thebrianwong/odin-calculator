@@ -31,7 +31,7 @@ button {
     flex-direction: column;
     border: solid 3px black;
     border-radius: 6px;
-    height: 75vh;
+    height: 85vh;
     width: 1000px;
 }
 
@@ -60,6 +60,14 @@ button {
     align-items: center;
     background-color: #b0dcdc;
     border-top: solid 3px black;
+}
+
+.delete-container {
+    display: flex;
+    flex: auto;
+    justify-content: flex-end;
+    margin: 0 10px 0;
+    gap: 33.33px;
 }
 
 .buttons-container {
