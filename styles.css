@@ -79,7 +79,7 @@ button {
 }
 
 .operator-button,
-#delete,
+#undo,
 #clear {
     background-color: #e1e1e1;
 }

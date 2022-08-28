@@ -214,14 +214,14 @@ const rejectZeroDivision = () => {
     displayValueContainer.innerText = "What're you crazy!?!?!?!?!";
 }
 
-const addDeleteClicker = () => {
-    const deleteButton = document.querySelector("#delete");
-    deleteButton.addEventListener("click", () => {
+const addUndoClicker = () => {
+    const undoButton = document.querySelector("#undo");
+    undoButton.addEventListener("click", () => {
         if (currentOperator === undefined) {
             console.log(tempValue)
             console.log(firstValue)
             console.log(typeof firstValue)
-            deleteLatestDigit();
+            undoLatestDigit();
             trackValues(tempValue)
             if (firstValue !== "") {
                 updateDisplayValue(firstValue);
@@ -229,7 +229,7 @@ const addDeleteClicker = () => {
                 updateDisplayValue(totalValue);
             }
         } else if (currentOperator !== undefined) {
-            deleteLatestDigit();
+            undoLatestDigit();
             trackValues(tempValue)
             if (secondValue !== "") {
                 updateDisplayValue(secondValue);
@@ -240,7 +240,7 @@ const addDeleteClicker = () => {
     })
 }
 
-const deleteLatestDigit = () => {
+const undoLatestDigit = () => {
     let latestDigit = tempValue.length - 1;
     if (latestDigit === 0) {
         tempValue = "";
@@ -321,7 +321,7 @@ addNumberClickers();
 addOperatorClickers();
 addEqualsClicker();
 addClearClicker();
-addDeleteClicker();
+addUndoClicker();
 addDecimalClicker();
 updateDisplayValue(totalValue);
 
