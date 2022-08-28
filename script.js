@@ -84,7 +84,7 @@ const addOperatorClickers = () => {
                 //     button.classList.remove("operator-clicked")
                 // })
                 // button.classList.add("operator-clicked")
-                currentOperator = button.getAttribute("id");
+                currentOperator = button.innerText;
                 convertToFunction();
                 firstValue = Number(firstValue);
                 tempValue = "";
@@ -130,19 +130,16 @@ const chainOperators = () => {
 
 const convertToFunction = () => {
     switch (currentOperator) {
-        case "add":
         case "+":
             currentOperator = add;
             break;
-        case "subtract":
         case "-":
             currentOperator = subtract;
             break;
-        case "multiply":
         case "*":
+        case "x":
             currentOperator = multiply;
             break;
-        case "divide":
         case "/":
             currentOperator = divide;
     }
