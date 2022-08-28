@@ -30,7 +30,8 @@ const addNumberClickers = () => {
     numberButtons.forEach((button) => {
         button.addEventListener("click", () => {
             // tempValue = Number(button.innerText);
-            applyButtonColors(numberButtons, button, "numbers");
+            applyButtonColors(numberButtons, "numbers");
+            button.classList.add("number-clicked");
             // numberButtons.forEach((button) => {
             //     button.classList.remove("number-clicked");
             // })
@@ -77,7 +78,8 @@ const addOperatorClickers = () => {
                 secondValue = undefined;
             }
             if (firstValue !== undefined) {
-                applyButtonColors(operatorButtons, button, "operators");
+                applyButtonColors(operatorButtons, "operators");
+                button.classList.add("operator-clicked")
                 // operatorButtons.forEach((button) => {
                 //     button.classList.remove("operator-clicked")
                 // })
@@ -89,20 +91,59 @@ const addOperatorClickers = () => {
             }
         })
     })
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "+" || event.key === "-" || event.key === "*" || event.key === "/") {
+            chainOperators();
+            applyButtonColors(operatorButtons, "operators");
+            button.classList.add("operator-clicked")
+            currentOperator = event.key;
+            convertToFunction();
+            firstValue = Number(firstValue);
+            tempValue = "";
+        }
+    })
 }
+
+const chainOperators = () => {
+    if (firstValue !== undefined && secondValue !== undefined) {
+        secondValue = Number(secondValue);
+        checkZeroDivision();
+        if (secondValue !== 0) {
+            totalValue = operate(currentOperator,firstValue,secondValue);
+            totalValue = Math.round(totalValue * 10000) / 10000;
+            updateDisplayValue(totalValue);
+        }
+        firstValue = totalValue;
+        secondValue = undefined;
+    }
+}
+
+// const trackOperator = () => {
+//     if (firstValue !== undefined) {
+//         applyButtonColors(operatorButtons, button, "operators");
+//         currentOperator = button.getAttribute("id");
+//         convertToFunction();
+//         firstValue = Number(firstValue);
+//         tempValue = "";
+//     }
+// }
 
 const convertToFunction = () => {
     switch (currentOperator) {
         case "add":
+        case "+":
             currentOperator = add;
             break;
         case "subtract":
+        case "-":
             currentOperator = subtract;
             break;
         case "multiply":
+        case "*":
             currentOperator = multiply;
             break;
         case "divide":
+        case "/":
             currentOperator = divide;
     }
 }
@@ -270,17 +311,15 @@ const inputDecimalPoint = () => {
     }   
 }
 
-const applyButtonColors = (allButtons, button, buttonType) => {
+const applyButtonColors = (allButtons, buttonType) => {
     if (buttonType === "numbers") {
         allButtons.forEach((button) => {
             button.classList.remove("number-clicked");
         })
-        button.classList.add("number-clicked");
     } else if (buttonType === "operators") {
         allButtons.forEach((button) => {
             button.classList.remove("operator-clicked")
         })
-        button.classList.add("operator-clicked")
     }
 }
 
@@ -320,4 +359,4 @@ addDeleteClicker();
 addDecimalClicker();
 updateDisplayValue(totalValue);
 
-// test();
+test();
