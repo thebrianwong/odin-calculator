@@ -193,7 +193,7 @@ const removeButtonFocus = () => {
 }
 
 const evaluateOperation = () => {
-    if (secondValue !== undefined) {
+    if (secondValue !== undefined && secondValue.length > 0) {
         resetButtonColors();
         secondValue = Number(secondValue);
         checkZeroDivision();
