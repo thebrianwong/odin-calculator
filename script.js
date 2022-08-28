@@ -226,7 +226,7 @@ const addUndoClicker = () => {
             if (secondValue !== "") {
                 updateDisplayValue(secondValue);
             } else {
-                updateDisplayValue(totalValue);
+                updateDisplayValue(0);
             }
         }
     })
