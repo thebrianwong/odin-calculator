@@ -54,7 +54,7 @@ const inputNumber = (buttonValue) => {
     tempValue = tempValue.concat(buttonValue);
     console.log(typeof tempValue)
     console.log(tempValue)
-    trackValues(tempValue)
+    trackValues()
     if (currentOperator === undefined) {
         updateDisplayValue(firstValue);
     } else if (currentOperator !== undefined) {
@@ -73,18 +73,8 @@ const addOperatorClickers = () => {
     const operatorButtons = document.querySelectorAll(".operator-button");
     operatorButtons.forEach((button) => {
         button.addEventListener("click", () => {
-            if (firstValue !== undefined && secondValue !== undefined) {
-                secondValue = Number(secondValue);
-                checkZeroDivision();
-                if (secondValue !== 0) {
-                    totalValue = operate(currentOperator,firstValue,secondValue);
-                    totalValue = Math.round(totalValue * 10000) / 10000;
-                    updateDisplayValue(totalValue);
-                }
-                firstValue = totalValue;
-                secondValue = undefined;
-            }
-            if (firstValue !== undefined) {
+            chainOperators();
+            if (firstValue !== undefined && tempValue.length > 0) {
                 applyButtonColors(operatorButtons, "operators");
                 button.classList.add("operator-clicked")
                 currentOperator = button.innerText;
@@ -97,16 +87,18 @@ const addOperatorClickers = () => {
     document.addEventListener("keydown", (event) => {
         if (event.key === "+" || event.key === "-" || event.key === "*" || event.key === "/") {
             chainOperators();
-            applyButtonColors(operatorButtons, "operators");
-            operatorButtons.forEach((button) => {
-                if (button.getAttribute("id") === event.key) {
-                    button.classList.add("operator-clicked")
-                }
-            })
-            currentOperator = event.key;
-            convertToFunction();
-            firstValue = Number(firstValue);
-            tempValue = "";
+            if (firstValue !== undefined && tempValue.length > 0) {
+                applyButtonColors(operatorButtons, "operators");
+                operatorButtons.forEach((button) => {
+                    if (button.getAttribute("id") === event.key) {
+                        button.classList.add("operator-clicked")
+                    }
+                })
+                currentOperator = event.key;
+                convertToFunction();
+                firstValue = Number(firstValue);
+                tempValue = "";
+            }
         }
     })
 }
@@ -142,11 +134,11 @@ const convertToFunction = () => {
     }
 }
 
-const trackValues = (value) => {
+const trackValues = () => {
     if (currentOperator === undefined) {
-        firstValue = value
+        firstValue = tempValue
     } else if (currentOperator !== undefined) {
-        secondValue = value;
+        secondValue = tempValue;
     }
 }
 
@@ -222,7 +214,7 @@ const addUndoClicker = () => {
             console.log(firstValue)
             console.log(typeof firstValue)
             undoLatestDigit();
-            trackValues(tempValue)
+            trackValues()
             if (firstValue !== "") {
                 updateDisplayValue(firstValue);
             } else {
@@ -230,7 +222,7 @@ const addUndoClicker = () => {
             }
         } else if (currentOperator !== undefined) {
             undoLatestDigit();
-            trackValues(tempValue)
+            trackValues()
             if (secondValue !== "") {
                 updateDisplayValue(secondValue);
             } else {
@@ -268,7 +260,7 @@ const inputDecimalPoint = () => {
         } else {
             tempValue = tempValue.concat(".");
         }
-        trackValues(tempValue)
+        trackValues()
         if (currentOperator === undefined) {
             updateDisplayValue(firstValue);
         } else if (currentOperator !== undefined) {
