@@ -32,19 +32,36 @@ const addNumberClickers = () => {
             applyButtonColors(numberButtons, "numbers");
             button.classList.add("number-clicked");
             let buttonValue = button.getAttribute("id").toString();
-            tempValue = tempValue.concat(buttonValue);
-            console.log(typeof tempValue)
-            console.log(tempValue)
-            trackValues(tempValue)
-            if (currentOperator === undefined) {
-                updateDisplayValue(firstValue);
-            } else if (currentOperator !== undefined) {
-                updateDisplayValue(secondValue);
-            }
-            console.log(firstValue)
-            console.log(secondValue)
+            inputNumber(buttonValue);
         })
     })
+    document.addEventListener("keydown", (event) => {
+        if (event.key.charCodeAt() >= 48 && event.key.charCodeAt() <= 57) {
+            applyButtonColors(numberButtons, "numbers");
+            numberButtons.forEach((button) => {
+                if (button.innerText === event.key) {
+                    button.classList.add("number-clicked");
+                }
+            })
+            console.log(typeof event.key)
+            let buttonValue = event.key;
+            inputNumber(buttonValue);
+        }
+    })
+}
+
+const inputNumber = (buttonValue) => {
+    tempValue = tempValue.concat(buttonValue);
+    console.log(typeof tempValue)
+    console.log(tempValue)
+    trackValues(tempValue)
+    if (currentOperator === undefined) {
+        updateDisplayValue(firstValue);
+    } else if (currentOperator !== undefined) {
+        updateDisplayValue(secondValue);
+    }
+    console.log(firstValue)
+    console.log(secondValue)
 }
 
 const updateDisplayValue = (value) => {
