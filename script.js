@@ -137,9 +137,16 @@ const addEqualsClicker = () => {
     })
     document.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
-            console.log("test")
+            removeButtonFocus();
             evaluateOperation();
         }
+    })
+}
+
+const removeButtonFocus = () => {
+    const allButtons = document.querySelectorAll("button");
+    allButtons.forEach((button) => {
+        button.blur();
     })
 }
 
@@ -313,4 +320,4 @@ addDeleteClicker();
 addDecimalClicker();
 updateDisplayValue(totalValue);
 
-test();
+// test();
