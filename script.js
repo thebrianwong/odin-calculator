@@ -29,16 +29,10 @@ const addNumberClickers = () => {
     const numberButtons = document.querySelectorAll(".number-button");
     numberButtons.forEach((button) => {
         button.addEventListener("click", () => {
-            // tempValue = Number(button.innerText);
             applyButtonColors(numberButtons, "numbers");
             button.classList.add("number-clicked");
-            // numberButtons.forEach((button) => {
-            //     button.classList.remove("number-clicked");
-            // })
-            // button.classList.add("number-clicked");
             let buttonValue = button.getAttribute("id").toString();
             tempValue = tempValue.concat(buttonValue);
-            // tempValue += buttonValue
             console.log(typeof tempValue)
             console.log(tempValue)
             trackValues(tempValue)
@@ -47,7 +41,6 @@ const addNumberClickers = () => {
             } else if (currentOperator !== undefined) {
                 updateDisplayValue(secondValue);
             }
-            // trackValues(tempValue)
             console.log(firstValue)
             console.log(secondValue)
         })
@@ -63,9 +56,6 @@ const addOperatorClickers = () => {
     const operatorButtons = document.querySelectorAll(".operator-button");
     operatorButtons.forEach((button) => {
         button.addEventListener("click", () => {
-            // operatorButtons.forEach((button) => {
-            //     button.classList.toggle("operator-clicked")
-            // })
             if (firstValue !== undefined && secondValue !== undefined) {
                 secondValue = Number(secondValue);
                 checkZeroDivision();
@@ -80,10 +70,6 @@ const addOperatorClickers = () => {
             if (firstValue !== undefined) {
                 applyButtonColors(operatorButtons, "operators");
                 button.classList.add("operator-clicked")
-                // operatorButtons.forEach((button) => {
-                //     button.classList.remove("operator-clicked")
-                // })
-                // button.classList.add("operator-clicked")
                 currentOperator = button.innerText;
                 convertToFunction();
                 firstValue = Number(firstValue);
@@ -122,16 +108,6 @@ const chainOperators = () => {
     }
 }
 
-// const trackOperator = () => {
-//     if (firstValue !== undefined) {
-//         applyButtonColors(operatorButtons, button, "operators");
-//         currentOperator = button.getAttribute("id");
-//         convertToFunction();
-//         firstValue = Number(firstValue);
-//         tempValue = "";
-//     }
-// }
-
 const convertToFunction = () => {
     switch (currentOperator) {
         case "+":
@@ -151,9 +127,6 @@ const convertToFunction = () => {
 
 const trackValues = (value) => {
     if (currentOperator === undefined) {
-        // console.log(value)
-        // firstValue.push(value);
-        // firstValue.join("");
         firstValue = value
     } else if (currentOperator !== undefined) {
         secondValue = value;
@@ -163,18 +136,7 @@ const trackValues = (value) => {
 const addEqualsClicker = () => {
     const equalsButton = document.querySelector("#equals");
     equalsButton.addEventListener("click", () => {
-        // if (secondValue !== undefined) {
-        //     resetButtonColors();
-        //     secondValue = Number(secondValue);
-        //     checkZeroDivision();
-        //     if (secondValue !== 0) {
-        //         totalValue = operate(currentOperator,firstValue,secondValue);
-        //         totalValue = Math.round(totalValue * 10000) / 10000;
-        //         console.log(totalValue)
-        //         updateDisplayValue(totalValue);
-        //     }
-        //     resetValues();
-        // }
+
         evaluateOperation();
     })
     document.addEventListener("keydown", (event) => {
@@ -242,7 +204,6 @@ const addDeleteClicker = () => {
             console.log(tempValue)
             console.log(firstValue)
             console.log(typeof firstValue)
-            // trackValues(tempValue)
             deleteLatestDigit();
             trackValues(tempValue)
             if (firstValue !== "") {
@@ -274,19 +235,6 @@ const deleteLatestDigit = () => {
 const addDecimalClicker = () => {
     const decimalButton = document.querySelector("#decimal");
     decimalButton.addEventListener("click", () => {
-        // if (!tempValue.includes(".")) {
-        //     if (tempValue === "") {
-        //         tempValue = "0.";
-        //     } else {
-        //         tempValue = tempValue.concat(".");
-        //     }
-        //     trackValues(tempValue)
-        //     if (currentOperator === undefined) {
-        //         updateDisplayValue(firstValue);
-        //     } else if (currentOperator !== undefined) {
-        //         updateDisplayValue(secondValue);
-        //     }
-        // }   
         inputDecimalPoint();
     })
     document.addEventListener("keydown", (event) => {
