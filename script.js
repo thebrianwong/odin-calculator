@@ -95,7 +95,11 @@ const addOperatorClickers = () => {
         if (event.key === "+" || event.key === "-" || event.key === "*" || event.key === "/") {
             chainOperators();
             applyButtonColors(operatorButtons, "operators");
-            button.classList.add("operator-clicked")
+            operatorButtons.forEach((button) => {
+                if (button.getAttribute("id") === event.key) {
+                    button.classList.add("operator-clicked")
+                }
+            })
             currentOperator = event.key;
             convertToFunction();
             firstValue = Number(firstValue);
