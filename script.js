@@ -121,19 +121,41 @@ const trackValues = (value) => {
 const addEqualsClicker = () => {
     const equalsButton = document.querySelector("#equals");
     equalsButton.addEventListener("click", () => {
-        if (secondValue !== undefined) {
-            resetButtonColors();
-            secondValue = Number(secondValue);
-            checkZeroDivision();
-            if (secondValue !== 0) {
-                totalValue = operate(currentOperator,firstValue,secondValue);
-                totalValue = Math.round(totalValue * 10000) / 10000;
-                console.log(totalValue)
-                updateDisplayValue(totalValue);
-            }
-            resetValues();
+        // if (secondValue !== undefined) {
+        //     resetButtonColors();
+        //     secondValue = Number(secondValue);
+        //     checkZeroDivision();
+        //     if (secondValue !== 0) {
+        //         totalValue = operate(currentOperator,firstValue,secondValue);
+        //         totalValue = Math.round(totalValue * 10000) / 10000;
+        //         console.log(totalValue)
+        //         updateDisplayValue(totalValue);
+        //     }
+        //     resetValues();
+        // }
+        evaluateOperation();
+    })
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            console.log("test")
+            evaluateOperation();
         }
     })
+}
+
+const evaluateOperation = () => {
+    if (secondValue !== undefined) {
+        resetButtonColors();
+        secondValue = Number(secondValue);
+        checkZeroDivision();
+        if (secondValue !== 0) {
+            totalValue = operate(currentOperator,firstValue,secondValue);
+            totalValue = Math.round(totalValue * 10000) / 10000;
+            console.log(totalValue)
+            updateDisplayValue(totalValue);
+        }
+        resetValues();
+    }
 }
 
 const resetValues = () => {
@@ -203,20 +225,42 @@ const deleteLatestDigit = () => {
 const addDecimalClicker = () => {
     const decimalButton = document.querySelector("#decimal");
     decimalButton.addEventListener("click", () => {
-        if (!tempValue.includes(".")) {
-            if (tempValue === "") {
-                tempValue = "0.";
-            } else {
-                tempValue = tempValue.concat(".");
-            }
-            trackValues(tempValue)
-            if (currentOperator === undefined) {
-                updateDisplayValue(firstValue);
-            } else if (currentOperator !== undefined) {
-                updateDisplayValue(secondValue);
-            }
-        }   
+        // if (!tempValue.includes(".")) {
+        //     if (tempValue === "") {
+        //         tempValue = "0.";
+        //     } else {
+        //         tempValue = tempValue.concat(".");
+        //     }
+        //     trackValues(tempValue)
+        //     if (currentOperator === undefined) {
+        //         updateDisplayValue(firstValue);
+        //     } else if (currentOperator !== undefined) {
+        //         updateDisplayValue(secondValue);
+        //     }
+        // }   
+        inputDecimalPoint();
     })
+    document.addEventListener("keydown", (event) => {
+        if (event.key === ".") {
+            inputDecimalPoint();
+        }
+    })
+}
+
+const inputDecimalPoint = () => {
+    if (!tempValue.includes(".")) {
+        if (tempValue === "") {
+            tempValue = "0.";
+        } else {
+            tempValue = tempValue.concat(".");
+        }
+        trackValues(tempValue)
+        if (currentOperator === undefined) {
+            updateDisplayValue(firstValue);
+        } else if (currentOperator !== undefined) {
+            updateDisplayValue(secondValue);
+        }
+    }   
 }
 
 const applyButtonColors = (allButtons, button, buttonType) => {
@@ -244,6 +288,23 @@ const resetButtonColors = () => {
     })
 }
 
+let foo;
+let bar;
+const test = () => {
+    document.addEventListener("keydown", (event) => {
+        console.log(event.key)
+        bar = KeyboardEvent.code
+        if (event.key.charCodeAt() >= 48 && event.key.charCodeAt() <= 57) {
+            foo = event.key
+            console.log(foo)
+        } else if (event.key === "+") {
+            console.log("HE ID PLSU")
+        }
+        // foo = event.key
+        // console.log(event.key)
+    })
+}
+
 addNumberClickers();
 addOperatorClickers();
 addEqualsClicker();
@@ -251,3 +312,5 @@ addClearClicker();
 addDeleteClicker();
 addDecimalClicker();
 updateDisplayValue(totalValue);
+
+test();
