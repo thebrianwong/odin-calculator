@@ -295,23 +295,6 @@ const resetButtonColors = () => {
     })
 }
 
-let foo;
-let bar;
-const test = () => {
-    document.addEventListener("keydown", (event) => {
-        console.log(event.key)
-        bar = KeyboardEvent.code
-        if (event.key.charCodeAt() >= 48 && event.key.charCodeAt() <= 57) {
-            foo = event.key
-            console.log(foo)
-        } else if (event.key === "+") {
-            console.log("HE ID PLSU")
-        }
-        // foo = event.key
-        // console.log(event.key)
-    })
-}
-
 addNumberClickers();
 addOperatorClickers();
 addEqualsClicker();
@@ -319,5 +302,3 @@ addClearClicker();
 addUndoClicker();
 addDecimalClicker();
 updateDisplayValue(totalValue);
-
-test();
