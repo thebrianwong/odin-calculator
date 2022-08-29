@@ -43,7 +43,6 @@ const addNumberClickers = () => {
                     button.classList.add("number-clicked");
                 }
             })
-            console.log(typeof event.key)
             let buttonValue = event.key;
             inputNumber(buttonValue);
         }
@@ -52,16 +51,12 @@ const addNumberClickers = () => {
 
 const inputNumber = (buttonValue) => {
     tempValue = tempValue.concat(buttonValue);
-    console.log(typeof tempValue)
-    console.log(tempValue)
     trackValues()
     if (currentOperator === undefined) {
         updateDisplayValue(firstValue);
     } else if (currentOperator !== undefined) {
         updateDisplayValue(secondValue);
     }
-    console.log(firstValue)
-    console.log(secondValue)
 }
 
 const updateDisplayValue = (value) => {
@@ -171,7 +166,6 @@ const evaluateOperation = () => {
         if (secondValue !== 0) {
             totalValue = operate(currentOperator,firstValue,secondValue);
             totalValue = Math.round(totalValue * 10000) / 10000;
-            console.log(totalValue)
             updateDisplayValue(totalValue);
         }
         resetValues();
@@ -229,9 +223,6 @@ const addUndoClicker = () => {
 
 const determineValueToUndo = () => {
     if (currentOperator === undefined && tempValue.length > 0) {
-        console.log(tempValue)
-        console.log(firstValue)
-        console.log(typeof firstValue)
         undoLatestDigit();
         trackValues()
         displayPostUndo(firstValue);
