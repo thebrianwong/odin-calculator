@@ -43,10 +43,6 @@ const addOperatorClickers = () => {
             if (firstValue !== undefined && tempValue.length > 0) {
                 resetSpecificColors(operatorButtons, "operators");
                 button.classList.add("operator-clicked")
-                // currentOperator = button.innerText;
-                // convertToFunction();
-                // firstValue = Number(firstValue);
-                // tempValue = "";
                 inputOperator(button, "click");
             }
         })
@@ -61,10 +57,6 @@ const addOperatorClickers = () => {
                         button.classList.add("operator-clicked")
                     }
                 })
-                // currentOperator = event.key;
-                // convertToFunction();
-                // firstValue = Number(firstValue);
-                // tempValue = "";
                 inputOperator(event, "keydown");
             }
         }
