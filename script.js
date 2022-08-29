@@ -134,6 +134,8 @@ const addDecimalClicker = () => {
     })
 }
 
+// NUMBER SPECIFIC SUPPORT FUNCTIONS
+
 const inputNumber = (buttonValue) => {
     tempValue = tempValue.concat(buttonValue);
     trackValues()
@@ -144,10 +146,7 @@ const inputNumber = (buttonValue) => {
     }
 }
 
-const updateDisplayValue = (value) => {
-    const displayValueContainer = document.querySelector(".display-container");
-    displayValueContainer.innerText = value;
-}
+// OPERATOR SPECIFIC SUPPORT FUNCTIONS
 
 const chainOperators = () => {
     if (firstValue !== undefined && secondValue !== undefined) {
@@ -180,13 +179,7 @@ const convertToFunction = () => {
     }
 }
 
-const trackValues = () => {
-    if (currentOperator === undefined) {
-        firstValue = tempValue
-    } else if (currentOperator !== undefined) {
-        secondValue = tempValue;
-    }
-}
+// EQUALS SPECIFIC SUPPORT FUNCTIONS
 
 const removeButtonFocus = () => {
     const allButtons = document.querySelectorAll("button");
@@ -209,13 +202,7 @@ const evaluateOperation = () => {
     }
 }
 
-const resetValues = () => {
-    firstValue = undefined;
-    secondValue = undefined;
-    tempValue = "";
-    currentOperator = undefined;
-    totalValue = 0;
-}
+// CLEAR SPECIFIC SUPPORT FUNCTIONS
 
 const clearEverything = () => {
     resetButtonColors();
@@ -223,16 +210,7 @@ const clearEverything = () => {
     updateDisplayValue(totalValue);
 }
 
-const checkZeroDivision = () => {
-    if (secondValue === 0 && currentOperator === divide) {
-        rejectZeroDivision();
-    }
-}
-
-const rejectZeroDivision = () => {
-    const displayValueContainer = document.querySelector(".display-container");
-    displayValueContainer.innerText = "What're you crazy!?!?!?!?!";
-}
+// UNDO SPECIFIC SUPPORT FUNCTIONS
 
 const determineValueToUndo = () => {
     if (currentOperator === undefined && tempValue.length > 0) {
@@ -274,6 +252,8 @@ const displayPostUndo = (value) => {
     }
 }
 
+// DECIMAL SPECIFIC SUPPORT FUNCTIONS
+
 const inputDecimalPoint = () => {
     if (!tempValue.includes(".")) {
         if (tempValue === "") {
@@ -289,6 +269,44 @@ const inputDecimalPoint = () => {
         }
     }   
 }
+
+// GENERAL VALUE RELATED SUPPORT FUNCTIONS
+
+const updateDisplayValue = (value) => {
+    const displayValueContainer = document.querySelector(".display-container");
+    displayValueContainer.innerText = value;
+}
+
+const trackValues = () => {
+    if (currentOperator === undefined) {
+        firstValue = tempValue
+    } else if (currentOperator !== undefined) {
+        secondValue = tempValue;
+    }
+}
+
+const resetValues = () => {
+    firstValue = undefined;
+    secondValue = undefined;
+    tempValue = "";
+    currentOperator = undefined;
+    totalValue = 0;
+}
+
+// DIVIDE BY ZERO RELATED SUPPORT FUNCTIONS
+
+const checkZeroDivision = () => {
+    if (secondValue === 0 && currentOperator === divide) {
+        rejectZeroDivision();
+    }
+}
+
+const rejectZeroDivision = () => {
+    const displayValueContainer = document.querySelector(".display-container");
+    displayValueContainer.innerText = "What're you crazy!?!?!?!?!";
+}
+
+// BUTTON COLOR RELATED SUPPORT FUNCTIONS
 
 const applyButtonColors = (allButtons, buttonType) => {
     if (buttonType === "numbers") {
@@ -312,6 +330,8 @@ const resetButtonColors = () => {
         button.classList.remove("operator-clicked");
     })
 }
+
+// INITIALIZE BUTTON FUNCTIONALITIES
 
 addNumberClickers();
 addOperatorClickers();
