@@ -215,19 +215,21 @@ const addUndoClicker = () => {
             console.log(typeof firstValue)
             undoLatestDigit();
             trackValues()
-            if (firstValue !== "") {
-                updateDisplayValue(firstValue);
-            } else {
-                updateDisplayValue(totalValue);
-            }
-        } else if (currentOperator !== undefined) {
+            // if (firstValue !== "") {
+            //     updateDisplayValue(firstValue);
+            // } else {
+            //     updateDisplayValue(totalValue);
+            // }
+            displayPostUndo(firstValue);
+        } else if (currentOperator !== undefined && secondValue !== undefined) {
             undoLatestDigit();
             trackValues()
-            if (secondValue !== "") {
-                updateDisplayValue(secondValue);
-            } else {
-                updateDisplayValue(0);
-            }
+            // if (secondValue !== "") {
+            //     updateDisplayValue(secondValue);
+            // } else {
+            //     updateDisplayValue(0);
+            // }
+            displayPostUndo(secondValue);
         }
     })
 }
@@ -241,6 +243,22 @@ const undoLatestDigit = () => {
     }
     if (tempValue === "0") {
         tempValue = "";
+    }
+}
+
+const displayPostUndo = (value) => {
+    if (value === firstValue) {
+        if (firstValue !== "") {
+            updateDisplayValue(firstValue);
+        } else {
+            updateDisplayValue(totalValue);
+        }
+    } else if (value === secondValue) {
+        if (secondValue !== "") {
+            updateDisplayValue(secondValue);
+        } else {
+            updateDisplayValue(0);
+        }
     }
 }
 
