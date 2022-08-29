@@ -209,7 +209,7 @@ const rejectZeroDivision = () => {
 const addUndoClicker = () => {
     const undoButton = document.querySelector("#undo");
     undoButton.addEventListener("click", () => {
-        if (currentOperator === undefined) {
+        if (currentOperator === undefined && tempValue.length > 0) {
             console.log(tempValue)
             console.log(firstValue)
             console.log(typeof firstValue)
@@ -238,6 +238,9 @@ const undoLatestDigit = () => {
         tempValue = "";
     } else if (latestDigit > 0) {
         tempValue = tempValue.slice(0,latestDigit);
+    }
+    if (tempValue === "0") {
+        tempValue = "";
     }
 }
 
