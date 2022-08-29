@@ -5,6 +5,9 @@ let secondValue;
 let tempValue = "";
 let currentOperator;
 
+const CHARCODE1 = 48;
+const CHARCODE9 = 57;
+
 // EVENT LISTENER FUNCTIONS
 
 const addNumberClickers = () => {
@@ -19,7 +22,7 @@ const addNumberClickers = () => {
         })
     })
     document.addEventListener("keydown", (event) => {
-        if (event.key.charCodeAt() >= 48 && event.key.charCodeAt() <= 57) {
+        if (event.key.charCodeAt() >= CHARCODE1 && event.key.charCodeAt() <= CHARCODE9) {
             resetSpecificColors(numberButtons, "numbers");
             numberButtons.forEach((button) => {
                 if (button.innerText === event.key) {
@@ -96,11 +99,11 @@ const addUndoClicker = () => {
     undoButton.addEventListener("click", () => {
         determineValueToUndo();
     })
-    document.addEventListener("keydown", (event => {
+    document.addEventListener("keydown", (event) => {
         if (event.key === "Backspace") {
             determineValueToUndo();
         }
-    }))
+    })
 }
 
 const addDecimalClicker = () => {
