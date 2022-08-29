@@ -189,10 +189,19 @@ const resetValues = () => {
 const addClearClicker = () => {
     const clearButton = document.querySelector("#clear");
     clearButton.addEventListener("click", () => {
-        resetButtonColors();
-        resetValues();
-        updateDisplayValue(totalValue);
+        clearEverything();
     })
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Delete") {
+            clearEverything();
+        }
+    })
+}
+
+const clearEverything = () => {
+    resetButtonColors();
+    resetValues();
+    updateDisplayValue(totalValue);
 }
 
 const checkZeroDivision = () => {
