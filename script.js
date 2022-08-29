@@ -9,11 +9,12 @@ let currentOperator;
 
 const addNumberClickers = () => {
     const numberButtons = document.querySelectorAll(".number-button");
+    let buttonValue;
     numberButtons.forEach((button) => {
-        button.addEventListener("click", (event) => {
+        button.addEventListener("click", () => {
             resetSpecificColors(numberButtons, "numbers");
             button.classList.add("number-clicked");
-            let buttonValue = button.getAttribute("id").toString();
+            buttonValue = button.getAttribute("id").toString();
             inputNumber(buttonValue);
         })
     })
@@ -25,7 +26,7 @@ const addNumberClickers = () => {
                     button.classList.add("number-clicked");
                 }
             })
-            let buttonValue = event.key;
+            buttonValue = event.key;
             inputNumber(buttonValue);
         }
     })
@@ -132,11 +133,6 @@ const chainOperators = () => {
     if (firstValue !== undefined && secondValue !== undefined) {
         secondValue = Number(secondValue);
         checkZeroDivision();
-        if (secondValue !== 0) {
-            totalValue = operate(currentOperator,firstValue,secondValue);
-            totalValue = Math.round(totalValue * 10000) / 10000;
-            updateDisplayValue(totalValue);
-        }
         firstValue = totalValue;
         secondValue = undefined;
     }
@@ -173,11 +169,6 @@ const evaluateOperation = () => {
         resetAllColors();
         secondValue = Number(secondValue);
         checkZeroDivision();
-        if (secondValue !== 0) {
-            totalValue = operate(currentOperator,firstValue,secondValue);
-            totalValue = Math.round(totalValue * 10000) / 10000;
-            updateDisplayValue(totalValue);
-        }
         resetValues();
     }
 }
@@ -273,15 +264,23 @@ const resetValues = () => {
     totalValue = 0;
 }
 
+const acceptEvaluation = () => {
+    totalValue = operate(currentOperator,firstValue,secondValue);
+    totalValue = Math.round(totalValue * 10000) / 10000;
+    updateDisplayValue(totalValue);
+}
+
 // DIVIDE BY ZERO RELATED SUPPORT FUNCTIONS
 
 const checkZeroDivision = () => {
     if (secondValue === 0 && currentOperator === divide) {
-        rejectZeroDivision();
+        rejectEvaluation();
+    } else {
+        acceptEvaluation();
     }
 }
 
-const rejectZeroDivision = () => {
+const rejectEvaluation = () => {
     const displayValueContainer = document.querySelector(".display-container");
     displayValueContainer.innerText = "What're you crazy!?!?!?!?!";
 }
