@@ -278,6 +278,7 @@ const acceptEvaluation = () => {
 const checkZeroDivision = () => {
     if (secondValue === 0 && currentOperator === divide) {
         rejectEvaluation();
+        resetValues();
     } else {
         acceptEvaluation();
     }
