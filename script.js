@@ -5,33 +5,13 @@ let secondValue;
 let tempValue = "";
 let currentOperator;
 
-const add = (x,y) => {
-    return x + y;
-}
-
-const subtract = (x,y) => {
-    return x - y;
-}
-
-const multiply = (x,y) => {
-    return x * y;
-}
-
-const divide = (x,y) => {
-    return x / y;
-}
-
-const operate = (operatorFunction,x,y) => {
-    return operatorFunction(x,y);
-}
-
 // EVENT LISTENER FUNCTIONS
 
 const addNumberClickers = () => {
     const numberButtons = document.querySelectorAll(".number-button");
     numberButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-            applyButtonColors(numberButtons, "numbers");
+        button.addEventListener("click", (event) => {
+            resetSpecificColors(numberButtons, "numbers");
             button.classList.add("number-clicked");
             let buttonValue = button.getAttribute("id").toString();
             inputNumber(buttonValue);
@@ -39,7 +19,7 @@ const addNumberClickers = () => {
     })
     document.addEventListener("keydown", (event) => {
         if (event.key.charCodeAt() >= 48 && event.key.charCodeAt() <= 57) {
-            applyButtonColors(numberButtons, "numbers");
+            resetSpecificColors(numberButtons, "numbers");
             numberButtons.forEach((button) => {
                 if (button.innerText === event.key) {
                     button.classList.add("number-clicked");
@@ -57,7 +37,7 @@ const addOperatorClickers = () => {
         button.addEventListener("click", () => {
             chainOperators();
             if (firstValue !== undefined && tempValue.length > 0) {
-                applyButtonColors(operatorButtons, "operators");
+                resetSpecificColors(operatorButtons, "operators");
                 button.classList.add("operator-clicked")
                 currentOperator = button.innerText;
                 convertToFunction();
@@ -70,7 +50,7 @@ const addOperatorClickers = () => {
         if (event.key === "+" || event.key === "-" || event.key === "*" || event.key === "/") {
             chainOperators();
             if (firstValue !== undefined && tempValue.length > 0) {
-                applyButtonColors(operatorButtons, "operators");
+                resetSpecificColors(operatorButtons, "operators");
                 operatorButtons.forEach((button) => {
                     if (button.getAttribute("id") === event.key) {
                         button.classList.add("operator-clicked")
@@ -190,7 +170,7 @@ const removeButtonFocus = () => {
 
 const evaluateOperation = () => {
     if (secondValue !== undefined && secondValue.length > 0) {
-        resetButtonColors();
+        resetAllColors();
         secondValue = Number(secondValue);
         checkZeroDivision();
         if (secondValue !== 0) {
@@ -205,7 +185,7 @@ const evaluateOperation = () => {
 // CLEAR SPECIFIC SUPPORT FUNCTIONS
 
 const clearEverything = () => {
-    resetButtonColors();
+    resetAllColors();
     resetValues();
     updateDisplayValue(totalValue);
 }
@@ -308,7 +288,7 @@ const rejectZeroDivision = () => {
 
 // BUTTON COLOR RELATED SUPPORT FUNCTIONS
 
-const applyButtonColors = (allButtons, buttonType) => {
+const resetSpecificColors = (allButtons, buttonType) => {
     if (buttonType === "numbers") {
         allButtons.forEach((button) => {
             button.classList.remove("number-clicked");
@@ -320,7 +300,7 @@ const applyButtonColors = (allButtons, buttonType) => {
     }
 }
 
-const resetButtonColors = () => {
+const resetAllColors = () => {
     const numberButtons = document.querySelectorAll(".number-button");
     const operatorButtons = document.querySelectorAll(".operator-button");
     numberButtons.forEach((button) => {
@@ -329,6 +309,28 @@ const resetButtonColors = () => {
     operatorButtons.forEach((button) => {
         button.classList.remove("operator-clicked");
     })
+}
+
+// MATH OPERATORS
+
+const add = (x,y) => {
+    return x + y;
+}
+
+const subtract = (x,y) => {
+    return x - y;
+}
+
+const multiply = (x,y) => {
+    return x * y;
+}
+
+const divide = (x,y) => {
+    return x / y;
+}
+
+const operate = (operatorFunction,x,y) => {
+    return operatorFunction(x,y);
 }
 
 // INITIALIZE BUTTON FUNCTIONALITIES
