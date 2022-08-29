@@ -25,6 +25,8 @@ const operate = (operatorFunction,x,y) => {
     return operatorFunction(x,y);
 }
 
+// EVENT LISTENER FUNCTIONS
+
 const addNumberClickers = () => {
     const numberButtons = document.querySelectorAll(".number-button");
     numberButtons.forEach((button) => {
@@ -47,21 +49,6 @@ const addNumberClickers = () => {
             inputNumber(buttonValue);
         }
     })
-}
-
-const inputNumber = (buttonValue) => {
-    tempValue = tempValue.concat(buttonValue);
-    trackValues()
-    if (currentOperator === undefined) {
-        updateDisplayValue(firstValue);
-    } else if (currentOperator !== undefined) {
-        updateDisplayValue(secondValue);
-    }
-}
-
-const updateDisplayValue = (value) => {
-    const displayValueContainer = document.querySelector(".display-container");
-    displayValueContainer.innerText = value;
 }
 
 const addOperatorClickers = () => {
@@ -96,6 +83,70 @@ const addOperatorClickers = () => {
             }
         }
     })
+}
+
+const addEqualsClicker = () => {
+    const equalsButton = document.querySelector("#equals");
+    equalsButton.addEventListener("click", () => {
+        evaluateOperation();
+    })
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            removeButtonFocus();
+            evaluateOperation();
+        }
+    })
+}
+
+const addClearClicker = () => {
+    const clearButton = document.querySelector("#clear");
+    clearButton.addEventListener("click", () => {
+        clearEverything();
+    })
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Delete") {
+            clearEverything();
+        }
+    })
+}
+
+const addUndoClicker = () => {
+    const undoButton = document.querySelector("#undo");
+    undoButton.addEventListener("click", () => {
+        determineValueToUndo();
+    })
+    document.addEventListener("keydown", (event => {
+        if (event.key === "Backspace") {
+            determineValueToUndo();
+        }
+    }))
+}
+
+const addDecimalClicker = () => {
+    const decimalButton = document.querySelector("#decimal");
+    decimalButton.addEventListener("click", () => {
+        inputDecimalPoint();
+    })
+    document.addEventListener("keydown", (event) => {
+        if (event.key === ".") {
+            inputDecimalPoint();
+        }
+    })
+}
+
+const inputNumber = (buttonValue) => {
+    tempValue = tempValue.concat(buttonValue);
+    trackValues()
+    if (currentOperator === undefined) {
+        updateDisplayValue(firstValue);
+    } else if (currentOperator !== undefined) {
+        updateDisplayValue(secondValue);
+    }
+}
+
+const updateDisplayValue = (value) => {
+    const displayValueContainer = document.querySelector(".display-container");
+    displayValueContainer.innerText = value;
 }
 
 const chainOperators = () => {
@@ -137,20 +188,6 @@ const trackValues = () => {
     }
 }
 
-const addEqualsClicker = () => {
-    const equalsButton = document.querySelector("#equals");
-    equalsButton.addEventListener("click", () => {
-
-        evaluateOperation();
-    })
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-            removeButtonFocus();
-            evaluateOperation();
-        }
-    })
-}
-
 const removeButtonFocus = () => {
     const allButtons = document.querySelectorAll("button");
     allButtons.forEach((button) => {
@@ -180,18 +217,6 @@ const resetValues = () => {
     totalValue = 0;
 }
 
-const addClearClicker = () => {
-    const clearButton = document.querySelector("#clear");
-    clearButton.addEventListener("click", () => {
-        clearEverything();
-    })
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Delete") {
-            clearEverything();
-        }
-    })
-}
-
 const clearEverything = () => {
     resetButtonColors();
     resetValues();
@@ -207,18 +232,6 @@ const checkZeroDivision = () => {
 const rejectZeroDivision = () => {
     const displayValueContainer = document.querySelector(".display-container");
     displayValueContainer.innerText = "What're you crazy!?!?!?!?!";
-}
-
-const addUndoClicker = () => {
-    const undoButton = document.querySelector("#undo");
-    undoButton.addEventListener("click", () => {
-        determineValueToUndo();
-    })
-    document.addEventListener("keydown", (event => {
-        if (event.key === "Backspace") {
-            determineValueToUndo();
-        }
-    }))
 }
 
 const determineValueToUndo = () => {
@@ -259,18 +272,6 @@ const displayPostUndo = (value) => {
             updateDisplayValue(0);
         }
     }
-}
-
-const addDecimalClicker = () => {
-    const decimalButton = document.querySelector("#decimal");
-    decimalButton.addEventListener("click", () => {
-        inputDecimalPoint();
-    })
-    document.addEventListener("keydown", (event) => {
-        if (event.key === ".") {
-            inputDecimalPoint();
-        }
-    })
 }
 
 const inputDecimalPoint = () => {
