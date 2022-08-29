@@ -209,29 +209,28 @@ const rejectZeroDivision = () => {
 const addUndoClicker = () => {
     const undoButton = document.querySelector("#undo");
     undoButton.addEventListener("click", () => {
-        if (currentOperator === undefined && tempValue.length > 0) {
-            console.log(tempValue)
-            console.log(firstValue)
-            console.log(typeof firstValue)
-            undoLatestDigit();
-            trackValues()
-            // if (firstValue !== "") {
-            //     updateDisplayValue(firstValue);
-            // } else {
-            //     updateDisplayValue(totalValue);
-            // }
-            displayPostUndo(firstValue);
-        } else if (currentOperator !== undefined && secondValue !== undefined) {
-            undoLatestDigit();
-            trackValues()
-            // if (secondValue !== "") {
-            //     updateDisplayValue(secondValue);
-            // } else {
-            //     updateDisplayValue(0);
-            // }
-            displayPostUndo(secondValue);
-        }
+        determineValueToUndo();
     })
+    document.addEventListener("keydown", (event => {
+        if (event.key === "Backspace") {
+            determineValueToUndo();
+        }
+    }))
+}
+
+const determineValueToUndo = () => {
+    if (currentOperator === undefined && tempValue.length > 0) {
+        console.log(tempValue)
+        console.log(firstValue)
+        console.log(typeof firstValue)
+        undoLatestDigit();
+        trackValues()
+        displayPostUndo(firstValue);
+    } else if (currentOperator !== undefined && secondValue !== undefined) {
+        undoLatestDigit();
+        trackValues()
+        displayPostUndo(secondValue);
+    }
 }
 
 const undoLatestDigit = () => {
