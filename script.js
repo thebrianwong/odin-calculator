@@ -230,8 +230,8 @@ const displayPostUndo = (value) => {
 
 const inputDecimalPoint = () => {
     if (!tempValue.includes(".")) {
-        if (tempValue === "") {
-            tempValue = "0.";
+        if (tempValue.length === 0) {
+            tempValue = [0,"."];
         } else {
             tempValue.push(".");
         }
