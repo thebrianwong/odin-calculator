@@ -136,17 +136,10 @@ const chainOperators = () => {
 }
 
 const inputOperator = (userInput, inputType) => {
-    if (inputType === "click") {
-        currentOperator = userInput.innerText;
-        convertToFunction();
-        firstValue = Number(firstValue);
-        tempValue = "";
-    } else {
-        currentOperator = userInput.key;
-        convertToFunction();
-        firstValue = Number(firstValue);
-        tempValue = "";
-    }
+    inputType === "click" ? currentOperator = userInput.innerText : currentOperator = userInput.key;
+    convertToFunction();
+    firstValue = Number(firstValue);
+    tempValue = "";
 }
 
 const convertToFunction = () => {
