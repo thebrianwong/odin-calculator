@@ -127,7 +127,7 @@ const inputNumber = (buttonValue) => {
 // OPERATOR SPECIFIC SUPPORT FUNCTIONS
 
 const chainOperators = () => {
-    if (firstValue !== undefined && secondValue !== undefined) {
+    if (firstValue !== undefined && secondValue !== undefined && tempValue.length > 0) {
         secondValue = Number(secondValue);
         checkZeroDivision();
         firstValue = totalValue;
