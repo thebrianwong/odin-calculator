@@ -208,9 +208,6 @@ const undoLatestDigit = () => {
     } else if (latestDigit > 0) {
         tempValue = tempValue.slice(0,latestDigit);
     }
-    if (tempValue === "0") {
-        tempValue = [];
-    }
 }
 
 const displayPostUndo = (value) => {
