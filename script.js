@@ -115,7 +115,10 @@ const addDecimalClicker = () => {
 // NUMBER SPECIFIC SUPPORT FUNCTIONS
 
 const inputNumber = (buttonValue) => {
-    if (tempValue !== "0") {
+    if (!(tempValue[0] === "0" && tempValue.length === 1 && buttonValue === "0")) {
+        if (tempValue[0] === "0" && tempValue.length === 1 && buttonValue !== "0") {
+            tempValue = [];
+        }
         tempValue.push(buttonValue);
         trackValues()
         if (currentOperator === undefined) {
@@ -231,7 +234,7 @@ const displayPostUndo = (value) => {
 const inputDecimalPoint = () => {
     if (!tempValue.includes(".")) {
         if (tempValue.length === 0) {
-            tempValue = [0,"."];
+            tempValue = ["0","."];
         } else {
             tempValue.push(".");
         }
