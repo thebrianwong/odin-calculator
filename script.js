@@ -115,12 +115,14 @@ const addDecimalClicker = () => {
 // NUMBER SPECIFIC SUPPORT FUNCTIONS
 
 const inputNumber = (buttonValue) => {
-    tempValue = tempValue.concat(buttonValue);
-    trackValues()
-    if (currentOperator === undefined) {
-        updateDisplayValue(firstValue);
-    } else if (currentOperator !== undefined) {
-        updateDisplayValue(secondValue);
+    if (tempValue !== "0") {
+        tempValue = tempValue.concat(buttonValue);
+        trackValues()
+        if (currentOperator === undefined) {
+            updateDisplayValue(firstValue);
+        } else if (currentOperator !== undefined) {
+            updateDisplayValue(secondValue);
+        }
     }
 }
 
