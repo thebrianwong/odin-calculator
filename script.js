@@ -2,7 +2,7 @@ let totalValue = 0;
 
 let firstValue;
 let secondValue;
-let tempValue = "";
+let tempValue = [];
 let currentOperator;
 
 const CHARCODE1 = 48;
@@ -17,7 +17,7 @@ const addNumberClickers = () => {
         button.addEventListener("click", () => {
             resetSpecificColors(numberButtons, "numbers");
             button.classList.add("number-clicked");
-            buttonValue = button.getAttribute("id").toString();
+            buttonValue = button.getAttribute("id");
             inputNumber(buttonValue);
         })
     })
@@ -116,7 +116,7 @@ const addDecimalClicker = () => {
 
 const inputNumber = (buttonValue) => {
     if (tempValue !== "0") {
-        tempValue = tempValue.concat(buttonValue);
+        tempValue.push(buttonValue);
         trackValues()
         if (currentOperator === undefined) {
             updateDisplayValue(firstValue);
@@ -141,7 +141,7 @@ const inputOperator = (userInput, inputType) => {
     inputType === "click" ? currentOperator = userInput.innerText : currentOperator = userInput.key;
     convertToFunction();
     firstValue = Number(firstValue);
-    tempValue = "";
+    tempValue = [];
 }
 
 const convertToFunction = () => {
@@ -204,12 +204,12 @@ const determineValueToUndo = () => {
 const undoLatestDigit = () => {
     let latestDigit = tempValue.length - 1;
     if (latestDigit === 0) {
-        tempValue = "";
+        tempValue = [];
     } else if (latestDigit > 0) {
         tempValue = tempValue.slice(0,latestDigit);
     }
     if (tempValue === "0") {
-        tempValue = "";
+        tempValue = [];
     }
 }
 
@@ -236,7 +236,7 @@ const inputDecimalPoint = () => {
         if (tempValue === "") {
             tempValue = "0.";
         } else {
-            tempValue = tempValue.concat(".");
+            tempValue.push(".");
         }
         trackValues()
         if (currentOperator === undefined) {
@@ -256,16 +256,16 @@ const updateDisplayValue = (value) => {
 
 const trackValues = () => {
     if (currentOperator === undefined) {
-        firstValue = tempValue
+        firstValue = tempValue.join("");
     } else if (currentOperator !== undefined) {
-        secondValue = tempValue;
+        secondValue = tempValue.join("");
     }
 }
 
 const resetValues = () => {
     firstValue = undefined;
     secondValue = undefined;
-    tempValue = "";
+    tempValue = [];
     currentOperator = undefined;
     totalValue = 0;
 }
