@@ -111,7 +111,9 @@ const addDecimalClicker = () => {
 // NUMBER SPECIFIC SUPPORT FUNCTIONS
 
 const inputNumber = (buttonValue) => {
-    if (!(tempValue[0] === "0" && tempValue.length === 1 && buttonValue === "0")) {
+    if (tempValue[0] === "0" && tempValue.length === 1 && buttonValue === "0" && secondValue === undefined) {
+        trackValues();
+    } else if (!(tempValue[0] === "0" && tempValue.length === 1 && buttonValue === "0")) {
         if (tempValue[0] === "0" && tempValue.length === 1 && buttonValue !== "0") {
             tempValue = [];
         }
