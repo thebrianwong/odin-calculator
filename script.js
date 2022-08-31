@@ -2,7 +2,7 @@ let totalValue = 0;
 
 let firstValue;
 let secondValue;
-let tempValue = [];
+let tempValue = ["0"];
 let currentOperator;
 
 const CHARCODE1 = 48;
@@ -144,7 +144,7 @@ const inputOperator = (userInput, inputType) => {
     inputType === "click" ? currentOperator = userInput.innerText : currentOperator = userInput.key;
     convertToFunction();
     firstValue = Number(firstValue);
-    tempValue = [];
+    tempValue = ["0"];
 }
 
 const convertToFunction = () => {
@@ -265,7 +265,7 @@ const trackValues = () => {
 const resetValues = () => {
     firstValue = undefined;
     secondValue = undefined;
-    tempValue = [];
+    tempValue = ["0"];
     currentOperator = undefined;
     totalValue = 0;
 }
