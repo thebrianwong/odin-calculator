@@ -1,6 +1,6 @@
 let totalValue = 0;
 
-let firstValue = "0";
+let firstValue = 0;
 let secondValue;
 let tempValue = ["0"];
 let currentOperator;
@@ -259,7 +259,7 @@ const trackValues = () => {
 }
 
 const resetValues = () => {
-    firstValue = "0";
+    firstValue = 0;
     secondValue = undefined;
     tempValue = ["0"];
     currentOperator = undefined;
