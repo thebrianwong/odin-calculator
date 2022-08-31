@@ -209,7 +209,7 @@ const undoLatestDigit = () => {
     if (latestDigit === 0) {
         tempValue = [];
     } else if (latestDigit > 0) {
-        tempValue = tempValue.slice(0,latestDigit);
+        tempValue.pop();
     }
 }
 
