@@ -1,6 +1,6 @@
 let totalValue = 0;
 
-let firstValue;
+let firstValue = "0";
 let secondValue;
 let tempValue = ["0"];
 let currentOperator;
@@ -40,25 +40,21 @@ const addOperatorClickers = () => {
     operatorButtons.forEach((button) => {
         button.addEventListener("click", () => {
             chainOperators();
-            if (firstValue !== undefined && tempValue.length > 0) {
-                resetSpecificColors(operatorButtons, "operators");
-                button.classList.add("operator-clicked")
-                inputOperator(button, "click");
-            }
+            resetSpecificColors(operatorButtons, "operators");
+            button.classList.add("operator-clicked")
+            inputOperator(button, "click");
         })
     })
     document.addEventListener("keydown", (event) => {
         if (event.key === "+" || event.key === "-" || event.key === "*" || event.key === "/") {
             chainOperators();
-            if (firstValue !== undefined && tempValue.length > 0) {
-                resetSpecificColors(operatorButtons, "operators");
-                operatorButtons.forEach((button) => {
-                    if (button.getAttribute("id") === event.key) {
-                        button.classList.add("operator-clicked")
-                    }
-                })
-                inputOperator(event, "keydown");
-            }
+            resetSpecificColors(operatorButtons, "operators");
+            operatorButtons.forEach((button) => {
+                if (button.getAttribute("id") === event.key) {
+                    button.classList.add("operator-clicked")
+                }
+            })
+            inputOperator(event, "keydown");
         }
     })
 }
@@ -207,7 +203,7 @@ const determineValueToUndo = () => {
 const undoLatestDigit = () => {
     let latestDigit = tempValue.length - 1;
     if (latestDigit === 0) {
-        tempValue = [];
+        tempValue = ["0"];
     } else if (latestDigit > 0) {
         tempValue.pop();
     }
@@ -224,7 +220,7 @@ const displayPostUndo = (value) => {
         if (secondValue !== "") {
             updateDisplayValue(secondValue);
         } else {
-            updateDisplayValue(0);
+            updateDisplayValue(totalValue);
         }
     }
 }
@@ -263,7 +259,7 @@ const trackValues = () => {
 }
 
 const resetValues = () => {
-    firstValue = undefined;
+    firstValue = "0";
     secondValue = undefined;
     tempValue = ["0"];
     currentOperator = undefined;
