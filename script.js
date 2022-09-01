@@ -171,7 +171,7 @@ const removeButtonFocus = () => {
 }
 
 const evaluateOperation = () => {
-    if (secondValue !== undefined && secondValue.length > 0) {
+    if (secondValue !== undefined) {
         resetAllColors();
         secondValue = Number(secondValue);
         checkZeroDivision();
@@ -253,9 +253,9 @@ const updateDisplayValue = (value) => {
 
 const trackValues = () => {
     if (currentOperator === undefined) {
-        firstValue = tempValue.join("");
+        firstValue = Number(tempValue.join(""));
     } else if (currentOperator !== undefined) {
-        secondValue = tempValue.join("");
+        secondValue = Number(tempValue.join(""));
     }
 }
 
