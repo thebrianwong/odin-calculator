@@ -250,9 +250,9 @@ const updateDisplayValue = (value) => {
 
 const trackValues = () => {
     if (currentOperator === undefined) {
-        firstValue = Number(tempValue.join(""));
+        firstValue = tempValue.join("");
     } else if (currentOperator !== undefined) {
-        secondValue = Number(tempValue.join(""));
+        secondValue = tempValue.join("");
     }
 }
 
