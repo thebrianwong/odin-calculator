@@ -113,6 +113,7 @@ const addDecimalClicker = () => {
 const inputNumber = (buttonValue) => {
     if (tempValue[0] === "0" && tempValue.length === 1 && buttonValue === "0" && secondValue === undefined) {
         trackValues();
+        updateDisplayValue(secondValue);
     } else if (!(tempValue[0] === "0" && tempValue.length === 1 && buttonValue === "0")) {
         if (tempValue[0] === "0" && tempValue.length === 1 && buttonValue !== "0") {
             tempValue = [];
