@@ -2,7 +2,7 @@ let totalValue = 0;
 
 let firstValue = 0;
 let secondValue;
-let tempValue = ["0"];
+let tempValue = [0];
 let currentOperator;
 
 const CHARCODE1 = 48;
@@ -112,10 +112,10 @@ const addDecimalClicker = () => {
 
 const inputNumber = (buttonValue) => {
     // Prevents multiple 0's from being inputted.
-    if (tempValue[0] === "0" && tempValue.length === 1 && buttonValue === "0") {
+    if (tempValue[0] === 0 && tempValue.length === 1 && buttonValue === "0") {
         return;
     // Prevents display from having a leading 0 (0125 instead of 125).
-    } else if (tempValue[0] == "0" && tempValue.length === 1) {
+    } else if (tempValue[0] == 0 && tempValue.length === 1) {
         tempValue = [];
     }
     tempValue.push(buttonValue);
@@ -141,7 +141,7 @@ const inputOperator = (userInput, inputType) => {
     inputType === "click" ? currentOperator = userInput.innerText : currentOperator = userInput.key;
     convertToFunction();
     firstValue = Number(firstValue);
-    tempValue = ["0"];
+    tempValue = [0];
 }
 
 const convertToFunction = () => {
@@ -204,7 +204,7 @@ const determineValueToUndo = () => {
 const undoLatestDigit = () => {
     let latestDigit = tempValue.length - 1;
     if (latestDigit === 0) {
-        tempValue = ["0"];
+        tempValue = [0];
     } else if (latestDigit > 0) {
         tempValue.pop();
     }
@@ -231,7 +231,7 @@ const displayPostUndo = (value) => {
 const inputDecimalPoint = () => {
     if (!tempValue.includes(".")) {
         if (tempValue.length === 0) {
-            tempValue = ["0","."];
+            tempValue = [0,"."];
         } else {
             tempValue.push(".");
         }
@@ -266,7 +266,7 @@ const resetValues = (type) => {
         firstValue = 0;
     }
     secondValue = undefined;
-    tempValue = ["0"];
+    tempValue = [0];
     currentOperator = undefined;
     totalValue = 0;
 }
