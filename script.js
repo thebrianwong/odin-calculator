@@ -133,8 +133,6 @@ const chainOperators = () => {
     if (firstValue !== undefined && secondValue !== undefined && tempValue.length > 0) {
         secondValue = Number(secondValue);
         checkZeroDivision();
-        // firstValue = totalValue;
-        // secondValue = undefined;
         resetValues("partial");
     }
 }
