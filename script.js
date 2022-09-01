@@ -191,11 +191,11 @@ const clearEverything = () => {
 // UNDO SPECIFIC SUPPORT FUNCTIONS
 
 const determineValueToUndo = () => {
-    if (currentOperator === undefined && tempValue.length > 0) {
+    if (currentOperator === undefined) {
         undoLatestDigit();
         trackValues()
         displayPostUndo(firstValue);
-    } else if (currentOperator !== undefined && secondValue !== undefined) {
+    } else if (currentOperator !== undefined) {
         undoLatestDigit();
         trackValues()
         displayPostUndo(secondValue);
