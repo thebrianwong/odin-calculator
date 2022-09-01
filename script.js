@@ -17,7 +17,7 @@ const addNumberClickers = () => {
         button.addEventListener("click", () => {
             resetSpecificColors(numberButtons, "numbers");
             button.classList.add("number-clicked");
-            buttonValue = button.getAttribute("id");
+            buttonValue = Number(button.getAttribute("id"));
             inputNumber(buttonValue);
         })
     })
@@ -29,7 +29,7 @@ const addNumberClickers = () => {
                     button.classList.add("number-clicked");
                 }
             })
-            buttonValue = event.key;
+            buttonValue = Number(event.key);
             inputNumber(buttonValue);
         }
     })
@@ -131,7 +131,6 @@ const inputNumber = (buttonValue) => {
 
 const chainOperators = () => {
     if (firstValue !== undefined && secondValue !== undefined && tempValue.length > 0) {
-        secondValue = Number(secondValue);
         checkZeroDivision();
         resetValues("partial");
     }
@@ -140,7 +139,6 @@ const chainOperators = () => {
 const inputOperator = (userInput, inputType) => {
     inputType === "click" ? currentOperator = userInput.innerText : currentOperator = userInput.key;
     convertToFunction();
-    firstValue = Number(firstValue);
     tempValue = [0];
 }
 
@@ -173,7 +171,6 @@ const removeButtonFocus = () => {
 const evaluateOperation = () => {
     if (secondValue !== undefined) {
         resetAllColors();
-        secondValue = Number(secondValue);
         checkZeroDivision();
         resetValues("partial");
     }
