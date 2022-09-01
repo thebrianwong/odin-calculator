@@ -111,19 +111,19 @@ const addDecimalClicker = () => {
 // NUMBER SPECIFIC SUPPORT FUNCTIONS
 
 const inputNumber = (buttonValue) => {
-    if (tempValue[0] === "0" && tempValue.length === 1 && buttonValue === "0" && secondValue === undefined) {
-        trackValues();
-    } else if (!(tempValue[0] === "0" && tempValue.length === 1 && buttonValue === "0")) {
-        if (tempValue[0] === "0" && tempValue.length === 1 && buttonValue !== "0") {
-            tempValue = [];
-        }
-        tempValue.push(buttonValue);
-        trackValues()
-        if (currentOperator === undefined) {
-            updateDisplayValue(firstValue);
-        } else if (currentOperator !== undefined) {
-            updateDisplayValue(secondValue);
-        }
+    // Prevents multiple 0's from being inputted.
+    if (tempValue[0] === "0" && tempValue.length === 1 && buttonValue === "0") {
+        return;
+    // Prevents display from having a leading 0 (0125 instead of 125).
+    } else if (tempValue[0] == "0" && tempValue.length === 1) {
+        tempValue = [];
+    }
+    tempValue.push(buttonValue);
+    trackValues()
+    if (currentOperator === undefined) {
+        updateDisplayValue(firstValue);
+    } else if (currentOperator !== undefined) {
+        updateDisplayValue(secondValue);
     }
 }
 
