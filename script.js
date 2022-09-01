@@ -176,7 +176,7 @@ const evaluateOperation = () => {
         resetAllColors();
         secondValue = Number(secondValue);
         checkZeroDivision();
-        resetValues();
+        resetValues("partial");
     }
 }
 
@@ -184,7 +184,7 @@ const evaluateOperation = () => {
 
 const clearEverything = () => {
     resetAllColors();
-    resetValues();
+    resetValues("all");
     updateDisplayValue(totalValue);
 }
 
@@ -260,8 +260,12 @@ const trackValues = () => {
     }
 }
 
-const resetValues = () => {
-    firstValue = 0;
+const resetValues = (type) => {
+    if (type === "partial") {
+        firstValue = totalValue;
+    } else {
+        firstValue = 0;
+    }
     secondValue = undefined;
     tempValue = ["0"];
     currentOperator = undefined;
@@ -279,7 +283,7 @@ const acceptEvaluation = () => {
 const checkZeroDivision = () => {
     if (secondValue === 0 && currentOperator === divide) {
         rejectEvaluation();
-        resetValues();
+        resetValues("all");
     } else {
         acceptEvaluation();
     }
