@@ -259,7 +259,7 @@ const resetSpecificColors = (allButtons, buttonType) => {
         allButtons.forEach((button) => {
             button.classList.remove("number-clicked");
         })
-    } else if (buttonType === "operators") {
+    } else {
         allButtons.forEach((button) => {
             button.classList.remove("operator-clicked")
         })
