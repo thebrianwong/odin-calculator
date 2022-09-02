@@ -194,12 +194,7 @@ const determineValueToUndo = () => {
 }
 
 const undoLatestDigit = () => {
-    let latestDigit = tempValue.length - 1;
-    if (latestDigit === 0) {
-        tempValue = [0];
-    } else if (latestDigit > 0) {
-        tempValue.pop();
-    }
+    tempValue.length === 1 ? tempValue = [0] : tempValue.pop();
 }
 
 const displayPostUndo = (value) => {
