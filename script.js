@@ -198,19 +198,7 @@ const undoLatestDigit = () => {
 }
 
 const displayPostUndo = (value) => {
-    if (value === firstValue) {
-        if (firstValue !== "") {
-            updateDisplayValue(firstValue);
-        } else {
-            updateDisplayValue(totalValue);
-        }
-    } else if (value === secondValue) {
-        if (secondValue !== "") {
-            updateDisplayValue(secondValue);
-        } else {
-            updateDisplayValue(totalValue);
-        }
-    }
+    value === firstValue ? updateDisplayValue(firstValue) : updateDisplayValue(secondValue);
 }
 
 // DECIMAL SPECIFIC SUPPORT FUNCTIONS
