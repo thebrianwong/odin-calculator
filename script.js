@@ -223,11 +223,7 @@ const trackValues = () => {
 }
 
 const resetValues = (type) => {
-    if (type === "partial") {
-        firstValue = totalValue;
-    } else {
-        firstValue = 0;
-    }
+    type === "partial" ? firstValue = totalValue : firstValue = 0;
     secondValue = undefined;
     tempValue = [0];
     currentOperator = undefined;
