@@ -66,10 +66,12 @@ const addOperatorClickers = () => {
 const addEqualsClicker = () => {
     const equalsButton = document.querySelector("#equals");
     equalsButton.addEventListener("click", () => {
-        evaluateOperation();
+        if (secondValue !== undefined) {
+            evaluateOperation();
+        }
     })
     document.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
+        if (event.key === "Enter" && secondValue !== undefined) {
             removeButtonFocus();
             evaluateOperation();
         }
@@ -169,12 +171,10 @@ const removeButtonFocus = () => {
 }
 
 const evaluateOperation = () => {
-    if (secondValue !== undefined) {
-        secondValue = Number(secondValue);
-        resetAllColors();
-        checkZeroDivision();
-        resetValues("partial");
-    }
+    secondValue = Number(secondValue);
+    resetAllColors();
+    checkZeroDivision();
+    resetValues("partial");
 }
 
 // CLEAR SPECIFIC SUPPORT FUNCTIONS
