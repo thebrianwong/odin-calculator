@@ -15,6 +15,7 @@ const addNumberClickers = () => {
     let buttonValue;
     numberButtons.forEach((button) => {
         button.addEventListener("click", () => {
+            // Clears coloring then adds coloring to the number clicked.
             resetSpecificColors(numberButtons, "numbers");
             button.classList.add("number-clicked");
             buttonValue = Number(button.getAttribute("id"));
@@ -39,6 +40,7 @@ const addOperatorClickers = () => {
     const operatorButtons = document.querySelectorAll(".operator-button");
     operatorButtons.forEach((button) => {
         button.addEventListener("click", () => {
+            // Allows for calculations with multiple values and operators.
             if (secondValue !== undefined) {
                 chainOperators();
             }
@@ -72,6 +74,8 @@ const addEqualsClicker = () => {
     })
     document.addEventListener("keydown", (event) => {
         if (event.key === "Enter" && secondValue !== undefined) {
+            /* Addresses usage where the second value's number is inputted via clicking but the equals is inputted via keyboard.
+            Without removing button focus, hitting equals on the keyboard would input the second value's number again.*/
             removeButtonFocus();
             evaluateOperation();
         }
@@ -105,6 +109,7 @@ const addUndoClicker = () => {
 const addDecimalClicker = () => {
     const decimalButton = document.querySelector("#decimal");
     decimalButton.addEventListener("click", () => {
+        // Prevents decimal point from being input multiple times.
         if (!tempValue.includes(".")) {
             inputDecimalPoint();
         }
@@ -154,6 +159,7 @@ const convertToFunction = () => {
         case "-":
             currentOperator = subtract;
             break;
+        // "*" is for keyboard input and "x" is for click input.
         case "*":
         case "x":
             currentOperator = multiply;
@@ -219,10 +225,12 @@ const updateDisplayValue = (value) => {
 }
 
 const trackValues = () => {
+    // tempValue stores inputted values as an array, which are then converted into a single value with .join().
     currentOperator === undefined ? firstValue = tempValue.join("") : secondValue = tempValue.join("");
 }
 
 const resetValues = (type) => {
+    // The "partial" variant occurs when the equals sign is inputted. It allows the user to continue making calculations to the final value.
     type === "partial" ? firstValue = totalValue : firstValue = 0;
     secondValue = undefined;
     tempValue = [0];
