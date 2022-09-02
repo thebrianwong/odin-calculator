@@ -39,7 +39,9 @@ const addOperatorClickers = () => {
     const operatorButtons = document.querySelectorAll(".operator-button");
     operatorButtons.forEach((button) => {
         button.addEventListener("click", () => {
-            chainOperators();
+            if (secondValue !== undefined) {
+                chainOperators();
+            }
             resetSpecificColors(operatorButtons, "operators");
             button.classList.add("operator-clicked")
             inputOperator(button, "click");
@@ -47,7 +49,9 @@ const addOperatorClickers = () => {
     })
     document.addEventListener("keydown", (event) => {
         if (event.key === "+" || event.key === "-" || event.key === "*" || event.key === "/") {
-            chainOperators();
+            if (secondValue !== undefined) {
+                chainOperators();
+            }
             resetSpecificColors(operatorButtons, "operators");
             operatorButtons.forEach((button) => {
                 if (button.getAttribute("id") === event.key) {
@@ -130,11 +134,9 @@ const inputNumber = (buttonValue) => {
 // OPERATOR SPECIFIC SUPPORT FUNCTIONS
 
 const chainOperators = () => {
-    if (firstValue !== undefined && secondValue !== undefined && tempValue.length > 0) {
-        secondValue = Number(secondValue);
-        checkZeroDivision();
-        resetValues("partial");
-    }
+    secondValue = Number(secondValue);
+    checkZeroDivision();
+    resetValues("partial");
 }
 
 const inputOperator = (userInput, inputType) => {
