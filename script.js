@@ -124,11 +124,7 @@ const inputNumber = (buttonValue) => {
     }
     tempValue.push(buttonValue);
     trackValues()
-    if (currentOperator === undefined) {
-        updateDisplayValue(firstValue);
-    } else if (currentOperator !== undefined) {
-        updateDisplayValue(secondValue);
-    }
+    currentOperator === undefined ? updateDisplayValue(firstValue) : updateDisplayValue(secondValue);
 }
 
 // OPERATOR SPECIFIC SUPPORT FUNCTIONS
