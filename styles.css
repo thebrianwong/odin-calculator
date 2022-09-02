@@ -91,3 +91,8 @@ button {
 .number-clicked {
     background-color: #9bc274;
 }
+
+.color-container {
+    display: flex;
+    flex-direction: column;
+}
