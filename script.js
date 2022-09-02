@@ -105,10 +105,12 @@ const addUndoClicker = () => {
 const addDecimalClicker = () => {
     const decimalButton = document.querySelector("#decimal");
     decimalButton.addEventListener("click", () => {
-        inputDecimalPoint();
+        if (!tempValue.includes(".")) {
+            inputDecimalPoint();
+        }
     })
     document.addEventListener("keydown", (event) => {
-        if (event.key === ".") {
+        if (event.key === "." && !tempValue.includes(".")) {
             inputDecimalPoint();
         }
     })
@@ -204,19 +206,9 @@ const displayPostUndo = (value) => {
 // DECIMAL SPECIFIC SUPPORT FUNCTIONS
 
 const inputDecimalPoint = () => {
-    if (!tempValue.includes(".")) {
-        if (tempValue.length === 0) {
-            tempValue = [0,"."];
-        } else {
-            tempValue.push(".");
-        }
-        trackValues()
-        if (currentOperator === undefined) {
-            updateDisplayValue(firstValue);
-        } else if (currentOperator !== undefined) {
-            updateDisplayValue(secondValue);
-        }
-    }   
+    tempValue.push(".");
+    trackValues()
+    currentOperator === undefined ? updateDisplayValue(firstValue) : updateDisplayValue(secondValue);
 }
 
 // GENERAL VALUE RELATED SUPPORT FUNCTIONS
