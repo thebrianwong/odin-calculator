@@ -131,6 +131,7 @@ const inputNumber = (buttonValue) => {
 
 const chainOperators = () => {
     if (firstValue !== undefined && secondValue !== undefined && tempValue.length > 0) {
+        secondValue = Number(secondValue);
         checkZeroDivision();
         resetValues("partial");
     }
@@ -139,6 +140,7 @@ const chainOperators = () => {
 const inputOperator = (userInput, inputType) => {
     inputType === "click" ? currentOperator = userInput.innerText : currentOperator = userInput.key;
     convertToFunction();
+    firstValue = Number(firstValue);
     tempValue = [0];
 }
 
@@ -170,6 +172,7 @@ const removeButtonFocus = () => {
 
 const evaluateOperation = () => {
     if (secondValue !== undefined) {
+        secondValue = Number(secondValue);
         resetAllColors();
         checkZeroDivision();
         resetValues("partial");
