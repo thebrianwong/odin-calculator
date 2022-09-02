@@ -219,11 +219,7 @@ const updateDisplayValue = (value) => {
 }
 
 const trackValues = () => {
-    if (currentOperator === undefined) {
-        firstValue = tempValue.join("");
-    } else if (currentOperator !== undefined) {
-        secondValue = tempValue.join("");
-    }
+    currentOperator === undefined ? firstValue = tempValue.join("") : secondValue = tempValue.join("");
 }
 
 const resetValues = (type) => {
