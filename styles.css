@@ -105,5 +105,9 @@ button {
 }
 
 #color-1 {
-    background-image: linear-gradient(to right, rgba(176, 220, 220, 1), rgba(194, 116, 116, 0.75), rgba(155, 194, 116, 1));
+    background-image: linear-gradient(to right, rgba(176, 220, 220, 1), rgba(194, 116, 116, 0.85), rgba(155, 194, 116, 1));
+}
+
+#color-2 {
+    background-image: linear-gradient(to right, rgba(201, 153, 197, 1), rgba(173, 201, 153, 1), rgba(201, 191, 153, 1));
 }
