@@ -8,6 +8,10 @@ let currentOperator;
 const CHARCODE1 = 48;
 const CHARCODE9 = 57;
 
+const COLORSCHEME1 = ["#b0dcdc", "#dcb0b0", "#c6dcb0"];
+const COLORSCHEME2 = ["#c999c5", "#adc999", "#c9bf99"];
+const COLORSCHEME3 = ["#e0dace", "#ddcee0", "#ced4e0"];
+
 // EVENT LISTENER FUNCTIONS
 
 const addNumberClickers = () => {
