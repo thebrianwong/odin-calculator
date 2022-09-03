@@ -12,9 +12,10 @@ button {
 
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 100px 0;
+    margisn: 100px 0;
 }
 
 .calculator-container,
@@ -94,5 +95,15 @@ button {
 
 .color-container {
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
+    gap: 100px;
+    margin: 20px 0;
+}
+
+.color-button {
+    height: 50px;
+}
+
+#color-1 {
+    background-image: linear-gradient(to right, rgba(176, 220, 220, 1), rgba(194, 116, 116, 0.75), rgba(155, 194, 116, 1));
 }
