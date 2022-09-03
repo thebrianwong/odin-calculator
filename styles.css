@@ -121,3 +121,39 @@ button {
     background-image: linear-gradient(to right, #e0dace, #ddcee0, #ced4e0);
     /* #be90c7, #7474c2 */
 }
+
+.bottom-color-1 {
+    background-color: #b0dcdc;
+}
+
+.top-color-1 {
+    background-color: #dcb0b0;
+}
+
+.display-color-1 {
+    background-color: #c6dcb0;
+}
+
+.bottom-color-2 {
+    background-color: #c999c5;
+}
+
+.top-color-2 {
+    background-color: #adc999;
+}
+
+.display-color-2 {
+    background-color: #c9bf99;
+}
+
+.bottom-color-3 {
+    background-color: #e0dace;
+}
+
+.top-color-3 {
+    background-color: #ddcee0;
+}
+
+.display-color-3 {
+    background-color: #ced4e0;
+}
