@@ -125,6 +125,16 @@ const addDecimalClicker = () => {
     })
 }
 
+const addColorChangeClicker = () => {
+    const colorChangeButtons = document.querySelectorAll(".color-button");
+    colorChangeButtons.forEach((button) => {
+        button.addEventListener("click", (button) => {
+            // change color scheme function changeColorScheme(button)
+            console.log("test")
+        })
+    })
+}
+
 // NUMBER SPECIFIC SUPPORT FUNCTIONS
 
 const inputNumber = (buttonValue) => {
@@ -319,4 +329,5 @@ addEqualsClicker();
 addClearClicker();
 addUndoClicker();
 addDecimalClicker();
+addColorChangeClicker();
 updateDisplayValue(totalValue);
