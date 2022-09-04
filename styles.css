@@ -85,14 +85,6 @@ button {
     background-color: #e1e1e1;
 }
 
-.operator-clicked {
-    background-color: #c27474;
-}
-
-.number-clicked {
-    background-color: #9bc274;
-}
-
 .color-container {
     display: flex;
     justify-content: space-around;
@@ -104,56 +96,14 @@ button {
     height: 50px;
 }
 
-/* Format: bottom, top, display 
-   Buttons: none, top, display */
-
 #color-1 {
     background-image: linear-gradient(to right, #b0dcdc, #dcb0b0, #c6dcb0);
-    /* #c27474, #9bc274 */
 }
 
 #color-2 {
     background-image: linear-gradient(to right, #c999c5, #adc999, #c9bf99);
-    /* #83b063, #b0a163 */
 }
 
 #color-3 {
     background-image: linear-gradient(to right, #e0dace, #ddcee0, #ced4e0);
-    /* #be90c7, #7474c2 */
-}
-
-.bottom-color-1 {
-    background-color: #b0dcdc;
-}
-
-.top-color-1 {
-    background-color: #dcb0b0;
-}
-
-.display-color-1 {
-    background-color: #c6dcb0;
-}
-
-.bottom-color-2 {
-    background-color: #c999c5;
-}
-
-.top-color-2 {
-    background-color: #adc999;
-}
-
-.display-color-2 {
-    background-color: #c9bf99;
-}
-
-.bottom-color-3 {
-    background-color: #e0dace;
-}
-
-.top-color-3 {
-    background-color: #ddcee0;
-}
-
-.display-color-3 {
-    background-color: #ced4e0;
 }
