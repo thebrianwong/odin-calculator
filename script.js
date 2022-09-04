@@ -235,8 +235,8 @@ const inputDecimalPoint = () => {
 // GENERAL VALUE RELATED SUPPORT FUNCTIONS
 
 const updateDisplayValue = (value) => {
-    const displayValueContainer = document.querySelector(".display-container");
-    displayValueContainer.innerText = value;
+    const displaySection = document.querySelector(".display-container");
+    displaySection.innerText = value;
 }
 
 const trackValues = () => {
@@ -271,8 +271,8 @@ const checkZeroDivision = () => {
 }
 
 const rejectEvaluation = () => {
-    const displayValueContainer = document.querySelector(".display-container");
-    displayValueContainer.innerText = "What're you crazy!?!?!?!?!";
+    const displaySection = document.querySelector(".display-container");
+    displaySection.innerText = "What're you crazy!?!?!?!?!";
 }
 
 // BUTTON COLOR RELATED SUPPORT FUNCTIONS
