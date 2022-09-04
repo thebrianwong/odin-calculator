@@ -147,7 +147,7 @@ const inputNumber = (buttonValue) => {
         tempValue = [];
     }
     tempValue.push(buttonValue);
-    trackValues()
+    trackValues();
     currentOperator === undefined ? updateDisplayValue(firstValue) : updateDisplayValue(secondValue);
 }
 
@@ -228,7 +228,7 @@ const displayPostUndo = (value) => {
 
 const inputDecimalPoint = () => {
     tempValue.push(".");
-    trackValues()
+    trackValues();
     currentOperator === undefined ? updateDisplayValue(firstValue) : updateDisplayValue(secondValue);
 }
 
