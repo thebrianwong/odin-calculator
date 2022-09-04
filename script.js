@@ -297,13 +297,8 @@ const resetAllColors = () => {
 // COLOR SCHEME RELATED SUPPORT FUNCTIONS
 
 const changeColorScheme = (colorSchemeIdentifier) => {
-    const bottomColor = 0;
-    const topColor = 1;
-    const displayColor = 2;
     currentColorScheme = chooseColorScheme(colorSchemeIdentifier);
-    changeColor(bottomColor);
-    changeColor(topColor);
-    changeColor(displayColor);
+    changeEachColor();
     changeClickedColors();
 }
 
@@ -318,17 +313,16 @@ const chooseColorScheme = (id) => {
     }
 }
 
-const changeColor = (schemeColor) => {
+const changeEachColor = () => {
+    const bottomColor = 0;
+    const topColor = 1;
+    const displayColor = 2;
     const bottomSection = document.querySelector(".bottom-container");
     const topSection = document.querySelector(".top-container");
     const displaySection = document.querySelector(".display-container");
-    if (schemeColor === 0) {
-        bottomSection.style.backgroundColor = currentColorScheme[schemeColor];
-    } else if (schemeColor === 1) {
-        topSection.style.backgroundColor = currentColorScheme[schemeColor];
-    } else {
-        displaySection.style.backgroundColor = currentColorScheme[schemeColor];
-    }
+    bottomSection.style.backgroundColor = currentColorScheme[bottomColor];
+    topSection.style.backgroundColor = currentColorScheme[topColor];
+    displaySection.style.backgroundColor = currentColorScheme[displayColor];
 }
 
 const addButtonColor = (button, type) => {
