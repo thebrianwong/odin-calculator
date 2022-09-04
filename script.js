@@ -125,12 +125,12 @@ const addDecimalClicker = () => {
     })
 }
 
-const addColorChangeClicker = () => {
+const addCalculatorColorClicker = () => {
     const colorChangeButtons = document.querySelectorAll(".color-button");
     colorChangeButtons.forEach((button) => {
-        button.addEventListener("click", (button) => {
-            // change color scheme function changeColorScheme(button)
-            console.log("test")
+        button.addEventListener("click", () => {
+            const colorSchemeIdentifier = button.getAttribute("id");
+            changeColorScheme(colorSchemeIdentifier);
         })
     })
 }
@@ -299,6 +299,42 @@ const resetAllColors = () => {
     })
 }
 
+// COLOR SCHEME RELATED SUPPORT FUNCTIONS
+
+const changeColorScheme = (colorSchemeIdentifier) => {
+    const bottomColor = 0;
+    const topColor = 1;
+    const displayColor = 2;
+    colorScheme = chooseColorScheme(colorSchemeIdentifier);
+    changeColor(colorScheme, bottomColor);
+    changeColor(colorScheme, topColor);
+    changeColor(colorScheme, displayColor);
+}
+
+const chooseColorScheme = (id) => {
+    switch (id) {
+        case "color-1":
+            return COLORSCHEME1;
+        case "color-2":
+            return COLORSCHEME2;
+        case "color-3":
+            return COLORSCHEME3;
+    }
+}
+
+const changeColor = (colorScheme, schemeColor) => {
+    const bottomSection = document.querySelector(".bottom-container");
+    const topSection = document.querySelector(".top-container");
+    const displaySection = document.querySelector(".display-container");
+    if (schemeColor === 0) {
+        bottomSection.style.backgroundColor = colorScheme[schemeColor];
+    } else if (schemeColor === 1) {
+        topSection.style.backgroundColor = colorScheme[schemeColor];
+    } else {
+        displaySection.style.backgroundColor = colorScheme[schemeColor];
+    }
+}
+
 // MATH OPERATORS
 
 const add = (x,y) => {
@@ -329,5 +365,5 @@ addEqualsClicker();
 addClearClicker();
 addUndoClicker();
 addDecimalClicker();
-addColorChangeClicker();
+addCalculatorColorClicker();
 updateDisplayValue(totalValue);
