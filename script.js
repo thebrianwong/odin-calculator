@@ -298,7 +298,7 @@ const resetAllColors = () => {
 
 const changeColorScheme = (colorSchemeIdentifier) => {
     currentColorScheme = chooseColorScheme(colorSchemeIdentifier);
-    changeEachColor();
+    changeCalculatorColors();
     changeClickedColors();
 }
 
@@ -313,7 +313,7 @@ const chooseColorScheme = (id) => {
     }
 }
 
-const changeEachColor = () => {
+const changeCalculatorColors = () => {
     const bottomColor = 0;
     const topColor = 1;
     const displayColor = 2;
