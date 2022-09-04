@@ -11,6 +11,7 @@ const CHARCODE9 = 57;
 const COLORSCHEME1 = ["#b0dcdc", "#dcb0b0", "#c6dcb0"];
 const COLORSCHEME2 = ["#c999c5", "#adc999", "#c9bf99"];
 const COLORSCHEME3 = ["#e0dace", "#ddcee0", "#ced4e0"];
+let currentColorScheme = COLORSCHEME1;
 
 // EVENT LISTENER FUNCTIONS
 
@@ -22,6 +23,7 @@ const addNumberClickers = () => {
             // Clears coloring then adds coloring to the number clicked.
             resetSpecificColors(numberButtons, "numbers");
             button.classList.add("number-clicked");
+            // addNumberColor(button);
             buttonValue = Number(button.getAttribute("id"));
             inputNumber(buttonValue);
         })
@@ -305,33 +307,32 @@ const changeColorScheme = (colorSchemeIdentifier) => {
     const bottomColor = 0;
     const topColor = 1;
     const displayColor = 2;
-    colorScheme = chooseColorScheme(colorSchemeIdentifier);
-    changeColor(colorScheme, bottomColor);
-    changeColor(colorScheme, topColor);
-    changeColor(colorScheme, displayColor);
+    currentColorScheme = chooseColorScheme(colorSchemeIdentifier);
+    changeColor(bottomColor);
+    changeColor(topColor);
+    changeColor(displayColor);
 }
 
 const chooseColorScheme = (id) => {
-    switch (id) {
-        case "color-1":
-            return COLORSCHEME1;
-        case "color-2":
-            return COLORSCHEME2;
-        case "color-3":
-            return COLORSCHEME3;
+    if (id === "color-1") {
+        return COLORSCHEME1;
+    } else if (id === "color-2") {
+        return COLORSCHEME2;
+    } else {
+        return COLORSCHEME3;
     }
 }
 
-const changeColor = (colorScheme, schemeColor) => {
+const changeColor = (schemeColor) => {
     const bottomSection = document.querySelector(".bottom-container");
     const topSection = document.querySelector(".top-container");
     const displaySection = document.querySelector(".display-container");
     if (schemeColor === 0) {
-        bottomSection.style.backgroundColor = colorScheme[schemeColor];
+        bottomSection.style.backgroundColor = currentColorScheme[schemeColor];
     } else if (schemeColor === 1) {
-        topSection.style.backgroundColor = colorScheme[schemeColor];
+        topSection.style.backgroundColor = currentColorScheme[schemeColor];
     } else {
-        displaySection.style.backgroundColor = colorScheme[schemeColor];
+        displaySection.style.backgroundColor = currentColorScheme[schemeColor];
     }
 }
 
