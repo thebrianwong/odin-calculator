@@ -21,8 +21,7 @@ const addNumberClickers = () => {
     numberButtons.forEach((button) => {
         button.addEventListener("click", () => {
             // Clears coloring then adds coloring to the number clicked.
-            resetSpecificColors(numberButtons, "numbers");
-            // button.classList.add("number-clicked");
+            resetSpecificColors(numberButtons);
             addButtonColor(button, "number");
             buttonValue = Number(button.getAttribute("id"));
             inputNumber(buttonValue);
@@ -30,10 +29,9 @@ const addNumberClickers = () => {
     })
     document.addEventListener("keydown", (event) => {
         if (event.key.charCodeAt() >= CHARCODE1 && event.key.charCodeAt() <= CHARCODE9) {
-            resetSpecificColors(numberButtons, "numbers");
+            resetSpecificColors(numberButtons);
             numberButtons.forEach((button) => {
                 if (button.innerText === event.key) {
-                    // button.classList.add("number-clicked");
                     addButtonColor(button, "number");
                 }
             })
@@ -51,8 +49,7 @@ const addOperatorClickers = () => {
             if (secondValue !== undefined) {
                 chainOperators();
             }
-            resetSpecificColors(operatorButtons, "operators");
-            // button.classList.add("operator-clicked")
+            resetSpecificColors(operatorButtons);
             addButtonColor(button, "operator");
             inputOperator(button, "click");
         })
@@ -62,10 +59,9 @@ const addOperatorClickers = () => {
             if (secondValue !== undefined) {
                 chainOperators();
             }
-            resetSpecificColors(operatorButtons, "operators");
+            resetSpecificColors(operatorButtons);
             operatorButtons.forEach((button) => {
                 if (button.getAttribute("id") === event.key) {
-                    // button.classList.add("operator-clicked")
                     addButtonColor(button, "operator");
                 }
             })
@@ -281,17 +277,10 @@ const rejectEvaluation = () => {
 
 // BUTTON COLOR RELATED SUPPORT FUNCTIONS
 
-const resetSpecificColors = (allButtons, buttonType) => {
-    if (buttonType === "numbers") {
-        allButtons.forEach((button) => {
-            // button.classList.remove("number-clicked");
-            button.style.backgroundColor = "";
-        })
-    } else {
-        allButtons.forEach((button) => {
-            button.style.backgroundColor = "";
-        })
-    }
+const resetSpecificColors = (allButtons) => {
+    allButtons.forEach((button) => {
+        button.style.backgroundColor = "";
+    })
 }
 
 const resetAllColors = () => {
