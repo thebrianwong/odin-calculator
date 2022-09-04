@@ -307,6 +307,7 @@ const changeColorScheme = (colorSchemeIdentifier) => {
     changeClickedColors();
 }
 
+// Determines which array of hexadecimal values to use.
 const chooseColorScheme = (id) => {
     if (id === "color-1") {
         return COLORSCHEME1;
