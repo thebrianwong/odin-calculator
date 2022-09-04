@@ -23,7 +23,7 @@ const addNumberClickers = () => {
             // Clears coloring then adds coloring to the number clicked.
             resetSpecificColors(numberButtons, "numbers");
             button.classList.add("number-clicked");
-            // addNumberColor(button);
+            // addButtonColor(button, "number");
             buttonValue = Number(button.getAttribute("id"));
             inputNumber(buttonValue);
         })
@@ -333,6 +333,16 @@ const changeColor = (schemeColor) => {
         topSection.style.backgroundColor = currentColorScheme[schemeColor];
     } else {
         displaySection.style.backgroundColor = currentColorScheme[schemeColor];
+    }
+}
+
+const addButtonColor = (button, type) => {
+    if (type === "number") {
+        const numberColor = 3;
+        button.style.backgroundColor = currentColorScheme[numberColor];
+    } else {
+        const operatorColor = 4;
+        button.style.backgroundColor = currentColorScheme[operatorColor];
     }
 }
 
