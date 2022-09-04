@@ -33,7 +33,8 @@ const addNumberClickers = () => {
             resetSpecificColors(numberButtons, "numbers");
             numberButtons.forEach((button) => {
                 if (button.innerText === event.key) {
-                    button.classList.add("number-clicked");
+                    // button.classList.add("number-clicked");
+                    addButtonColor(button, "number");
                 }
             })
             buttonValue = Number(event.key);
@@ -51,7 +52,8 @@ const addOperatorClickers = () => {
                 chainOperators();
             }
             resetSpecificColors(operatorButtons, "operators");
-            button.classList.add("operator-clicked")
+            // button.classList.add("operator-clicked")
+            addButtonColor(button, "operator");
             inputOperator(button, "click");
         })
     })
@@ -63,7 +65,8 @@ const addOperatorClickers = () => {
             resetSpecificColors(operatorButtons, "operators");
             operatorButtons.forEach((button) => {
                 if (button.getAttribute("id") === event.key) {
-                    button.classList.add("operator-clicked")
+                    // button.classList.add("operator-clicked")
+                    addButtonColor(button, "operator");
                 }
             })
             inputOperator(event, "keydown");
@@ -281,11 +284,12 @@ const rejectEvaluation = () => {
 const resetSpecificColors = (allButtons, buttonType) => {
     if (buttonType === "numbers") {
         allButtons.forEach((button) => {
-            button.classList.remove("number-clicked");
+            // button.classList.remove("number-clicked");
+            button.style.backgroundColor = "";
         })
     } else {
         allButtons.forEach((button) => {
-            button.classList.remove("operator-clicked")
+            button.style.backgroundColor = "";
         })
     }
 }
@@ -294,10 +298,10 @@ const resetAllColors = () => {
     const numberButtons = document.querySelectorAll(".number-button");
     const operatorButtons = document.querySelectorAll(".operator-button");
     numberButtons.forEach((button) => {
-        button.classList.remove("number-clicked");
+        button.style.backgroundColor = "";
     })
     operatorButtons.forEach((button) => {
-        button.classList.remove("operator-clicked");
+        button.style.backgroundColor = "";
     })
 }
 
