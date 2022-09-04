@@ -297,7 +297,7 @@ const resetAllColors = () => {
 // COLOR SCHEME RELATED SUPPORT FUNCTIONS
 
 const changeColorScheme = (colorSchemeIdentifier) => {
-    currentColorScheme = chooseColorScheme(colorSchemeIdentifier);
+    chooseColorScheme(colorSchemeIdentifier);
     changeCalculatorColors();
     changeClickedColors();
 }
@@ -305,11 +305,11 @@ const changeColorScheme = (colorSchemeIdentifier) => {
 // Determines which array of hexadecimal values to use.
 const chooseColorScheme = (id) => {
     if (id === "color-1") {
-        return COLORSCHEME1;
+        currentColorScheme = COLORSCHEME1;
     } else if (id === "color-2") {
-        return COLORSCHEME2;
+        currentColorScheme = COLORSCHEME2;
     } else {
-        return COLORSCHEME3;
+        currentColorScheme = COLORSCHEME3;
     }
 }
 
