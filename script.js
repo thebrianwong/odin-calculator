@@ -304,6 +304,7 @@ const changeColorScheme = (colorSchemeIdentifier) => {
     changeColor(bottomColor);
     changeColor(topColor);
     changeColor(displayColor);
+    changeClickedColors();
 }
 
 const chooseColorScheme = (id) => {
@@ -337,6 +338,21 @@ const addButtonColor = (button, type) => {
         const operatorColor = 4;
         button.style.backgroundColor = currentColorScheme[operatorColor];
     }
+}
+
+const changeClickedColors = () => {
+    const numberButtons = document.querySelectorAll(".number-button");
+    const operatorButtons = document.querySelectorAll(".operator-button");
+    numberButtons.forEach((button) => {
+        if (button.style.backgroundColor !== "") {
+            addButtonColor(button, "number");
+        }
+    })
+    operatorButtons.forEach((button) => {
+        if (button.style.backgroundColor !== "") {
+            addButtonColor(button, "operator");
+        }
+    })
 }
 
 // MATH OPERATORS
