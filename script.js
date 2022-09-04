@@ -8,9 +8,9 @@ let currentOperator;
 const CHARCODE1 = 48;
 const CHARCODE9 = 57;
 
-const COLORSCHEME1 = ["#b0dcdc", "#dcb0b0", "#c6dcb0"];
-const COLORSCHEME2 = ["#c999c5", "#adc999", "#c9bf99"];
-const COLORSCHEME3 = ["#e0dace", "#ddcee0", "#ced4e0"];
+const COLORSCHEME1 = ["#b0dcdc", "#dcb0b0", "#c6dcb0", "#9bc274", "#c27474"];
+const COLORSCHEME2 = ["#c999c5", "#adc999", "#c9bf99", "#83b063", "#b0a163"];
+const COLORSCHEME3 = ["#e0dace", "#ddcee0", "#ced4e0", "#be90c7", "#7474c2"];
 let currentColorScheme = COLORSCHEME1;
 
 // EVENT LISTENER FUNCTIONS
