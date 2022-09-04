@@ -335,6 +335,7 @@ const addButtonColor = (button, type) => {
     }
 }
 
+// Changes the color of already clicked buttons to the appropriate color in the new color scheme if the color scheme is changed mid-calculation.
 const changeClickedColors = () => {
     const numberButtons = document.querySelectorAll(".number-button");
     const operatorButtons = document.querySelectorAll(".operator-button");
